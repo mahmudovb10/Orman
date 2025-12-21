@@ -12,6 +12,9 @@ import { useAuth } from "../context/AuthContext";
 export function CheckoutPage({ onNavigate }) {
   const { cart, getCartTotal, clearCart } = useCart();
   const { user, isAuthenticated } = useAuth();
+  const [phone, setPhone] = useState(user?.phone || "");
+  const [address, setAddress] = useState(user?.address || "");
+
   const [showWarning, setShowWarning] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
 
@@ -166,8 +169,8 @@ export function CheckoutPage({ onNavigate }) {
                   </label>
                   <input
                     type="tel"
-                    value={user?.phone || ""}
-                    readOnly={isAuthenticated}
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900 focus:border-transparent bg-gray-50"
                     placeholder="+998 (90) 123-45-67"
                   />
@@ -178,9 +181,9 @@ export function CheckoutPage({ onNavigate }) {
                     Delivery Address
                   </label>
                   <textarea
-                    value={user?.address || ""}
-                    readOnly={isAuthenticated}
+                    value={address}
                     rows={3}
+                    onChange={(e) => setAddress(e.target.value)}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900 focus:border-transparent bg-gray-50 resize-none"
                     placeholder="Enter your delivery address"
                   />

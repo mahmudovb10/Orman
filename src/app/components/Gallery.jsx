@@ -30,10 +30,10 @@ export function Gallery() {
     <section id="gallery" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="mb-4 text-amber-900">Our Gallery</h2>
+          <h2 className="mb-4 text-amber-900">Bizning Galereyamiz</h2>
           <p className="max-w-2xl mx-auto text-gray-600">
-            Explore our collection of masterfully crafted furniture and lighting
-            solutions
+            Mijozlar bizning mahsulotlarimizni o'z uylarida ishlatishdan juda
+            mamnun.
           </p>
         </div>
 

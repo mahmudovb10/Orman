@@ -11,10 +11,11 @@ export function Contact() {
     <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="mb-4 text-amber-900">Get In Touch</h2>
+          <h2 className="mb-4 text-amber-900">Aloqa uchun</h2>
           <p className="max-w-2xl mx-auto text-gray-600">
-            Have questions about our products? We'd love to hear from you. Send
-            us a message and we'll respond as soon as possible.
+            Mahsulotlarimiz haqida savollaringiz bormi? Sizdan eshitishni
+            istardik. Yuborish bizga xabar yuboring va biz imkon qadar tezroq
+            javob beramiz.
           </p>
         </div>
 
@@ -22,14 +23,14 @@ export function Contact() {
           {/* Contact Info */}
           <div className="space-y-8">
             <div>
-              <h3 className="mb-6 text-amber-900">Contact Information</h3>
+              <h3 className="mb-6 text-amber-900">Bog'lanish uchun ma'lumot</h3>
               <div className="space-y-6">
                 <div className="flex gap-4">
                   <div className="w-12 h-12 bg-amber-900/10 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Phone size={20} className="text-amber-900" />
                   </div>
                   <div>
-                    <div className="text-gray-900 mb-1">Phone</div>
+                    <div className="text-gray-900 mb-1">Telefon</div>
                     <a
                       href="tel:+998901234567"
                       className="text-gray-600 hover:text-amber-900 transition-colors"
@@ -59,11 +60,11 @@ export function Contact() {
                     <MapPin size={20} className="text-amber-900" />
                   </div>
                   <div>
-                    <div className="text-gray-900 mb-1">Address</div>
+                    <div className="text-gray-900 mb-1">Manzil</div>
                     <p className="text-gray-600">
                       123 Craftsman Street
                       <br />
-                      Tashkent, Uzbekistan
+                      Fergana, Uzbekistan
                     </p>
                   </div>
                 </div>
@@ -73,11 +74,11 @@ export function Contact() {
                     <Clock size={20} className="text-amber-900" />
                   </div>
                   <div>
-                    <div className="text-gray-900 mb-1">Working Hours</div>
+                    <div className="text-gray-900 mb-1">Ish vaqti</div>
                     <p className="text-gray-600">
-                      Monday - Friday: 9:00 AM - 6:00 PM
+                      Shanba - Payshanba: 8:00 - 17:00
                       <br />
-                      Saturday: 10:00 AM - 4:00 PM
+                      Juma: Dam olish kuni
                     </p>
                   </div>
                 </div>

@@ -1,4 +1,11 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
+import { useAuth } from "./AuthContext";
 
 export interface Product {
   id: number;
@@ -30,11 +37,28 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {
+  const { user, isAuthenticated } = useAuth();
+
+  const storageKey =
+    isAuthenticated && user ? `cart_${user.id || user.email}` : "cart_guest";
+
   const [cart, setCart] = useState<CartItem[]>([]);
+
+  // 🔹 LocalStorage'dan cartni yuklash (user o'zgarsa ham)
+  useEffect(() => {
+    const savedCart = localStorage.getItem(storageKey);
+    setCart(savedCart ? JSON.parse(savedCart) : []);
+  }, [storageKey]);
+
+  // 🔹 Cart o'zgarsa localStorage'ga yozish
+  useEffect(() => {
+    localStorage.setItem(storageKey, JSON.stringify(cart));
+  }, [cart, storageKey]);
 
   const addToCart = (product: Product) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => item.id === product.id);
+
       if (existingItem) {
         return prevCart.map((item) =>
           item.id === product.id
@@ -42,6 +66,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
             : item
         );
       }
+
       return [...prevCart, { ...product, quantity: 1 }];
     });
   };
@@ -55,6 +80,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       removeFromCart(productId);
       return;
     }
+
     setCart((prevCart) =>
       prevCart.map((item) =>
         item.id === productId ? { ...item, quantity } : item
@@ -64,6 +90,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const clearCart = () => {
     setCart([]);
+    localStorage.removeItem(storageKey);
   };
 
   const getCartTotal = () => {

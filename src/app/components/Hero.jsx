@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 
 export function Hero() {
-  const scrollToSection = () => {
+  const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -25,25 +25,27 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
-        <h1 className="mb-6 text-white">Crafting Excellence in Wood</h1>
+        <h1 className="mb-6 text-white">
+          Yog'ochdan hunarmandchilikning mukammalligi
+        </h1>
         <p className="max-w-2xl mx-auto mb-8 text-white/90">
-          Uzbekistan's premier manufacturer of luxury wooden furniture, elegant
-          chandeliers, and sophisticated sofas. Experience the perfect blend of
-          traditional craftsmanship and modern design.
+          O'zbekistonda hashamatli yog'och mebellar va nafis qandillar ishlab
+          chiqaruvchi yetakchi kompaniya. An'anaviy hunarmandchilik va zamonaviy
+          dizaynning mukammal uyg'unligini his eting.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
             onClick={() => scrollToSection("products")}
             className="px-8 py-3 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors flex items-center justify-center gap-2"
           >
-            Explore Products
+            Mahsulotlarni ko'rish
             <ArrowRight size={20} />
           </button>
           <button
             onClick={() => scrollToSection("contact")}
             className="px-8 py-3 bg-white/10 backdrop-blur-sm text-white border border-white/30 rounded-lg hover:bg-white/20 transition-colors"
           >
-            Contact Us
+            Biz bilan bog'lanish
           </button>
         </div>
       </div>
