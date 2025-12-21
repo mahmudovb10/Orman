@@ -32,22 +32,25 @@ export function About() {
           <div>
             <h2 className="mb-6 text-amber-900">About Orman Company</h2>
             <p className="text-gray-600 mb-6">
-              As Uzbekistan's largest and most trusted manufacturer of wooden
-              furniture, chandeliers, and sofas, Orman Company has been setting
-              the standard for quality and craftsmanship since our founding.
+              O‘zbekistondagi eng yirik va eng ishonchli yog‘och mebellar,
+              qandillar va divanlar ishlab chiqaruvchi “Orman” kompaniyasi
+              tashkil etilganimizdan beri sifat va mahorat standartini belgilab
+              kelmoqda.
             </p>
             <p className="text-gray-600 mb-6">
-              Our commitment to excellence is evident in every piece we create.
-              We combine traditional woodworking techniques passed down through
-              generations with modern design sensibilities to create furniture
-              that stands the test of time.
+              Bizning mukammallikka sodiqligimiz biz yaratgan har bir asarimizda
+              yaqqol ko'rinadi. Biz an'anaviy yog'ochga ishlov berish usullarini
+              birlashtiramiz qandillar va yog'och mahsulotlarini yaratish uchun
+              zamonaviy dizayn sezgirliklari bilan avlodlar bu vaqt sinovidan
+              o'tadi.
             </p>
             <p className="text-gray-600 mb-8">
-              From sourcing the finest materials to the final finishing touches,
-              every step of our manufacturing process is carefully monitored to
-              ensure the highest quality standards. Our team of skilled artisans
-              takes pride in their work, creating pieces that are not just
-              furniture, but works of art.
+              Eng yaxshi materiallarni sotib olishdan yakuniy pardozlashgacha,
+              ishlab chiqarish jarayonimizning har bir bosqichi eng yuqori sifat
+              standartlarini ta'minlash uchun diqqat bilan nazorat qilinadi.
+              Bizning mahoratli hunarmandlar jamoasi o'z ishlaridan faxrlanib,
+              nafaqat yog'ochdan yasalgan buyumlar, balki san'at asarlarini
+              yaratadi.
             </p>
 
             {/* Stats Grid */}
