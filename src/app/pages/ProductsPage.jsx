@@ -6,10 +6,10 @@ export function ProductsPage({ onProductClick }) {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   const categories = [
-    { id: "all", label: "All Products", icon: null },
-    { id: "wooden", label: "Wooden Furniture", icon: TreePine },
-    { id: "chandelier", label: "Chandeliers", icon: LampCeiling },
-    { id: "sofa", label: "Sofas", icon: Sofa },
+    { id: "all", label: "Hamma mahsulotlar", icon: null },
+    { id: "wooden", label: "Yog'och mahsulotlar", icon: TreePine },
+    { id: "chandelier", label: "Lyustra mahsulotlar", icon: LampCeiling },
+    { id: "sofa", label: "Boshqa", icon: Sofa },
   ];
 
   const filteredProducts =
@@ -22,10 +22,10 @@ export function ProductsPage({ onProductClick }) {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="mb-4 text-amber-900">Our Products</h1>
+          <h1 className="mb-4 text-amber-900">Mahsulotlarimiz</h1>
           <p className="max-w-2xl mx-auto text-gray-600">
-            Browse our complete collection of handcrafted furniture, elegant
-            chandeliers, and luxury sofas
+            Bizning qo'lda ishlangan nafis qandillar va yog'ochdan tayyorlangan
+            buyumlar to'plamini ko'rib chiqing
           </p>
         </div>
 
