@@ -1,4 +1,5 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser"; // EmailJS ulandi
 import {
   CreditCard,
   Truck,
@@ -12,17 +13,65 @@ import { useAuth } from "../context/AuthContext";
 export function CheckoutPage({ onNavigate }) {
   const { cart, getCartTotal, clearCart } = useCart();
   const { user, isAuthenticated } = useAuth();
+  const [fullName, setFullName] = useState(user?.name || "");
+  const [emailAddress, setEmailAddres] = useState(user?.email || "");
   const [phone, setPhone] = useState(user?.phone || "");
   const [address, setAddress] = useState(user?.address || "");
 
   const [showWarning, setShowWarning] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
 
+  // --- EMAILJS FUNKSIYASI ---
+  const sendEmailOrder = () => {
+    // 1. Mahsulotlar ro'yxatini shablondagi {{name}}, {{units}}, {{price}} ga moslaymiz
+    const ordersArray = cart.map((item) => ({
+      name: item.title,
+      units: item.quantity,
+      price: (item.price * item.quantity).toLocaleString(),
+      item: item.image, // Agar shablondagi rasm chiqishini xohlasangiz
+    }));
+
+    // 2. Ma'lumotlarni EmailJS kutayotgan "Nested Object" formatida tayyorlaymiz
+    const templateParams = {
+      order_id: Math.floor(Math.random() * 1000000).toString(),
+      user_name: user?.name || "Mijoz",
+      user_phone: phone,
+      user_address: address,
+      email: user?.email, // Pastdagi "The email was sent to {{email}}" uchun
+      orders: ordersArray, // {{#orders}} loopi uchun
+
+      // MUHIM: EmailJS {{cost.total}} ni tushunishi uchun ob'ekt ichida ob'ekt yuboramiz
+      cost: {
+        shipping: "0.00",
+        tax: (getCartTotal() * 0.1).toLocaleString(),
+        total: (getCartTotal() * 1.1).toLocaleString(),
+      },
+    };
+
+    emailjs
+      .send(
+        "service_1uq66yb",
+        "template_uewwyfv",
+        templateParams,
+        "nIdfdldPYcfb5buo5"
+      )
+      .then((res) => {
+        console.log("Email yuborildi!", res.status, res.text);
+      })
+      .catch((err) => {
+        console.error("422 Xatoligi yuz berdi. Tafsilot:", err);
+      });
+  };
+  // ---------------------------
+
   const handlePlaceOrder = () => {
     if (!isAuthenticated) {
       setShowWarning(true);
       return;
     }
+
+    // Buyurtma tasdiqlanganda email yuborishni chaqiramiz
+    sendEmailOrder();
 
     setOrderPlaced(true);
 
@@ -32,6 +81,7 @@ export function CheckoutPage({ onNavigate }) {
     }, 3000);
   };
 
+  // ... (UI qismi o'zgarishsiz qoladi)
   if (cart.length === 0 && !orderPlaced) {
     return (
       <div className="min-h-screen pt-24 pb-20 bg-gray-50">
@@ -143,8 +193,8 @@ export function CheckoutPage({ onNavigate }) {
                   <label className="block text-gray-700 mb-2">Full Name</label>
                   <input
                     type="text"
-                    value={user?.name || ""}
-                    readOnly={isAuthenticated}
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900 focus:border-transparent bg-gray-50"
                     placeholder="Your name"
                   />
@@ -156,8 +206,8 @@ export function CheckoutPage({ onNavigate }) {
                   </label>
                   <input
                     type="email"
-                    value={user?.email || ""}
-                    readOnly={isAuthenticated}
+                    value={emailAddress}
+                    onChange={(e) => setEmailAddres(e.target.value)}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900 focus:border-transparent bg-gray-50"
                     placeholder="your@email.com"
                   />
