@@ -1,5 +1,4 @@
 import { ArrowRight } from "lucide-react";
-
 export function Hero() {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
