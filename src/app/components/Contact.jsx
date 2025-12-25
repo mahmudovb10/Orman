@@ -100,7 +100,7 @@ export function Contact() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-gray-700 mb-2">
-                  Full Name
+                  To'liq Ism Familiyangiz
                 </label>
                 <input
                   type="text"
@@ -113,7 +113,7 @@ export function Contact() {
 
               <div>
                 <label htmlFor="email" className="block text-gray-700 mb-2">
-                  Email Address
+                  Email manzilingiz
                 </label>
                 <input
                   type="email"
@@ -126,7 +126,7 @@ export function Contact() {
 
               <div>
                 <label htmlFor="phone" className="block text-gray-700 mb-2">
-                  Phone Number
+                  Telefon raqamingiz
                 </label>
                 <input
                   type="tel"
@@ -138,14 +138,14 @@ export function Contact() {
 
               <div>
                 <label htmlFor="message" className="block text-gray-700 mb-2">
-                  Message
+                  Xabar
                 </label>
                 <textarea
                   id="message"
                   required
                   rows={5}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900 focus:border-transparent resize-none"
-                  placeholder="Tell us about your project..."
+                  placeholder="Taklif yoki etirozingiz bo'lsa yozing..."
                 />
               </div>
 
@@ -153,7 +153,7 @@ export function Contact() {
                 type="submit"
                 className="w-full py-4 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors flex items-center justify-center gap-2"
               >
-                Send Message
+                Xabarni yuborish
                 <Send size={18} />
               </button>
             </form>
