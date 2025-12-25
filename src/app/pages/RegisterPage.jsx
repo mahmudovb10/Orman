@@ -45,8 +45,10 @@ export function RegisterPage({ onNavigate }) {
             <div className="w-16 h-16 bg-amber-900 rounded-full flex items-center justify-center mx-auto mb-4">
               <UserPlus size={32} className="text-white" />
             </div>
-            <h1 className="text-amber-900 mb-2">Create Account</h1>
-            <p className="text-gray-600">Register to place orders</p>
+            <h1 className="text-amber-900 mb-2">Hisob yaratish</h1>
+            <p className="text-gray-600">
+              Buyurtma berish uchun ro'yxatdan o'ting
+            </p>
           </div>
 
           {error && (
@@ -59,7 +61,7 @@ export function RegisterPage({ onNavigate }) {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-gray-700 mb-2">
-                Full Name
+                To'liq Ism Familiyangiz
               </label>
               <div className="relative">
                 <User
@@ -79,7 +81,7 @@ export function RegisterPage({ onNavigate }) {
 
             <div>
               <label htmlFor="email" className="block text-gray-700 mb-2">
-                Email Address
+                Email manzilingiz
               </label>
               <div className="relative">
                 <Mail
@@ -145,18 +147,18 @@ export function RegisterPage({ onNavigate }) {
               className="w-full py-4 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors flex items-center justify-center gap-2"
             >
               <UserPlus size={20} />
-              Create Account
+              Hisob yaratish
             </button>
           </form>
 
           <div className="mt-6 text-center">
             <p className="text-gray-600">
-              Already have an account?{" "}
+              Allaqachon hisobingiz bormi?{" "}
               <button
                 onClick={() => onNavigate("login")}
                 className="text-amber-900 hover:underline"
               >
-                Login here
+                Kirish
               </button>
             </p>
           </div>
