@@ -38,19 +38,19 @@ export function CartPage({ onNavigate }) {
           className="flex items-center gap-2 text-gray-700 hover:text-amber-900 transition-colors mb-8"
         >
           <ArrowLeft size={20} />
-          Continue Shopping
+          Sotib olishda davom etish
         </button>
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center justify-between mb-6">
-              <h1 className="text-amber-900">Shopping Cart</h1>
+              <h1 className="text-amber-900">Xaridlar sahifasi</h1>
               <button
                 onClick={clearCart}
                 className="text-gray-600 hover:text-red-600 transition-colors"
               >
-                Clear All
+                Hammasini tozalash
               </button>
             </div>
 
@@ -130,28 +130,31 @@ export function CartPage({ onNavigate }) {
           </div>
 
           {/* Order Summary */}
+          {/* Order Summary qismi */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-xl p-6 shadow-md sticky top-24">
-              <h3 className="mb-6 text-gray-900">Order Summary</h3>
+              <h3 className="mb-6 text-gray-900">Umumiy Summa</h3>
 
               <div className="space-y-4 mb-6">
+                {/* Mahsulotlarning umumiy narxi */}
                 <div className="flex justify-between text-gray-600">
-                  <span>Subtotal</span>
+                  <span>Barchasi</span>
                   <span>${getCartTotal().toLocaleString()}</span>
                 </div>
+
+                {/* Yetkazib berish */}
                 <div className="flex justify-between text-gray-600">
-                  <span>Shipping</span>
+                  <span>Yetkazib berish</span>
                   <span className="text-green-600">Free</span>
                 </div>
-                <div className="flex justify-between text-gray-600">
-                  <span>Tax (estimated)</span>
-                  <span>${(getCartTotal() * 0.1).toLocaleString()}</span>
-                </div>
+
+                {/* BU YERDAN TAX QATORI O'CHIRILDI */}
 
                 <div className="border-t border-gray-200 pt-4">
-                  <div className="flex justify-between text-gray-900">
-                    <span>Total</span>
-                    <span>${(getCartTotal() * 1.1).toLocaleString()}</span>
+                  <div className="flex justify-between text-gray-900  text-lg">
+                    <span>Hammasi</span>
+                    {/* 1.1 ko'paytmasi olib tashlandi, endi faqat sof summa chiqadi */}
+                    <span>${getCartTotal().toLocaleString()}</span>
                   </div>
                 </div>
               </div>
@@ -160,19 +163,19 @@ export function CartPage({ onNavigate }) {
                 onClick={() => onNavigate("checkout")}
                 className="w-full py-4 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors mb-3"
               >
-                Proceed to Checkout
+                Rasmiylashtirish
               </button>
 
               <button
                 onClick={() => onNavigate("products")}
                 className="w-full py-4 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
               >
-                Continue Shopping
+                Sotib olishda davom etish
               </button>
 
               <div className="mt-6 p-4 bg-amber-50 rounded-lg">
                 <p className="text-amber-900">
-                  🎉 Free shipping on all orders!
+                  🎉 Barcha mahsulotlarni yetkazib berish bepul !
                 </p>
               </div>
             </div>

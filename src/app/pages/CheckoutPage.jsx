@@ -43,7 +43,7 @@ export function CheckoutPage({ onNavigate }) {
       // MUHIM: EmailJS {{cost.total}} ni tushunishi uchun ob'ekt ichida ob'ekt yuboramiz
       cost: {
         shipping: "0.00",
-        tax: (getCartTotal() * 0.1).toLocaleString(),
+        tax: "0",
         total: (getCartTotal() * 1.1).toLocaleString(),
       },
     };
