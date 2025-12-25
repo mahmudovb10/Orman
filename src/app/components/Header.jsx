@@ -93,7 +93,7 @@ export function Header({ currentPage, onNavigate }) {
                 onClick={() => handleNavigate("login")}
                 className="text-gray-700 hover:text-amber-900 transition-colors"
               >
-                Login
+                Kirish
               </button>
             )}
 

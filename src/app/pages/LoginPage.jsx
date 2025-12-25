@@ -33,8 +33,10 @@ export function LoginPage({ onNavigate }) {
             <div className="w-16 h-16 bg-amber-900 rounded-full flex items-center justify-center mx-auto mb-4">
               <LogIn size={32} className="text-white" />
             </div>
-            <h1 className="text-amber-900 mb-2">Welcome Back</h1>
-            <p className="text-gray-600">Login to your account</p>
+            <h1 className="text-amber-900 mb-2">
+              Qaytib kelganingizdan xursandmiz
+            </h1>
+            <p className="text-gray-600">Hisobingizga kiring</p>
           </div>
 
           {error && (
@@ -47,7 +49,7 @@ export function LoginPage({ onNavigate }) {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-gray-700 mb-2">
-                Email Address
+                Email manzilingiz
               </label>
               <div className="relative">
                 <Mail
@@ -67,7 +69,7 @@ export function LoginPage({ onNavigate }) {
 
             <div>
               <label htmlFor="password" className="block text-gray-700 mb-2">
-                Password
+                Parol
               </label>
               <div className="relative">
                 <Lock
@@ -90,18 +92,18 @@ export function LoginPage({ onNavigate }) {
               className="w-full py-4 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors flex items-center justify-center gap-2"
             >
               <LogIn size={20} />
-              Login
+              Kirish
             </button>
           </form>
 
           <div className="mt-6 text-center">
             <p className="text-gray-600">
-              Don't have an account?{" "}
+              Hisobingiz yo'qmi?{" "}
               <button
                 onClick={() => onNavigate("register")}
                 className="text-amber-900 hover:underline"
               >
-                Register here
+                Hisob ochish
               </button>
             </p>
           </div>
