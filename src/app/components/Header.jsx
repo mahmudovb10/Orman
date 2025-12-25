@@ -53,31 +53,31 @@ export function Header({ currentPage, onNavigate }) {
               onClick={() => scrollToSection("home")}
               className="text-gray-700 hover:text-amber-900 transition-colors"
             >
-              Home
+              Bosh sahifa
             </button>
             <button
               onClick={() => handleNavigate("products")}
               className="text-gray-700 hover:text-amber-900 transition-colors"
             >
-              Products
+              Mahsulotlar
             </button>
             <button
               onClick={() => scrollToSection("about")}
               className="text-gray-700 hover:text-amber-900 transition-colors"
             >
-              About
+              Haqida
             </button>
             <button
               onClick={() => scrollToSection("gallery")}
               className="text-gray-700 hover:text-amber-900 transition-colors"
             >
-              Gallery
+              Galareya
             </button>
             <button
               onClick={() => scrollToSection("contact")}
               className="text-gray-700 hover:text-amber-900 transition-colors"
             >
-              Contact
+              Aloqa
             </button>
 
             {/* Profile Icon */}

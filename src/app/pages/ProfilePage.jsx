@@ -15,15 +15,13 @@ export function ProfilePage({ onNavigate }) {
       <div className="min-h-screen pt-24 pb-20 bg-gray-50 flex items-center justify-center">
         <div className="container mx-auto px-4">
           <div className="max-w-md mx-auto bg-white rounded-2xl shadow-lg p-8 text-center">
-            <h2 className="text-amber-900 mb-4">Please Login</h2>
-            <p className="text-gray-600 mb-6">
-              You need to login to view your profile
-            </p>
+            <h2 className="text-amber-900 mb-4">Login qilish</h2>
+            <p className="text-gray-600 mb-6">Sizni hisobingiz mavjud emas</p>
             <button
               onClick={() => onNavigate("login")}
               className="px-8 py-3 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors"
             >
-              Go to Login
+              Login sahifasiga qaytish
             </button>
           </div>
         </div>
@@ -65,7 +63,7 @@ export function ProfilePage({ onNavigate }) {
                   className="px-6 py-2 bg-white/10 backdrop-blur-sm text-white border border-white/30 rounded-lg hover:bg-white/20 transition-colors flex items-center gap-2"
                 >
                   <LogOut size={18} />
-                  Logout
+                  Chiqish
                 </button>
               </div>
             </div>
@@ -73,20 +71,20 @@ export function ProfilePage({ onNavigate }) {
             {/* Success Message */}
             {showSuccess && (
               <div className="mx-8 mt-6 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
-                Profile updated successfully!
+                Profil yangilanishi muvaffaqiyati bajarildi !
               </div>
             )}
 
             {/* Profile Info */}
             <div className="p-8">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-amber-900">Profile Information</h2>
+                <h2 className="text-amber-900">Siz haqingizda </h2>
                 {!isEditing && (
                   <button
                     onClick={() => setIsEditing(true)}
                     className="px-4 py-2 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors"
                   >
-                    Edit Profile
+                    Tahrirlash
                   </button>
                 )}
               </div>
@@ -96,7 +94,7 @@ export function ProfilePage({ onNavigate }) {
                   <label className="block text-gray-700 mb-2">
                     <div className="flex items-center gap-2">
                       <User size={18} />
-                      Full Name
+                      To'liq Ism Familiyangiz
                     </div>
                   </label>
                   <input
@@ -112,7 +110,7 @@ export function ProfilePage({ onNavigate }) {
                   <label className="block text-gray-700 mb-2">
                     <div className="flex items-center gap-2">
                       <Mail size={18} />
-                      Email Address
+                      Email manzilingiz
                     </div>
                   </label>
                   <input
@@ -121,14 +119,16 @@ export function ProfilePage({ onNavigate }) {
                     disabled
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-600"
                   />
-                  <p className="text-gray-500 mt-1">Email cannot be changed</p>
+                  <p className="text-gray-500 mt-1">
+                    Elektron pochtani o'zgartirib bo'lmaydi.
+                  </p>
                 </div>
 
                 <div>
                   <label className="block text-gray-700 mb-2">
                     <div className="flex items-center gap-2">
                       <Phone size={18} />
-                      Phone Number
+                      Telefon raqamingiz
                     </div>
                   </label>
                   <input
@@ -145,7 +145,7 @@ export function ProfilePage({ onNavigate }) {
                   <label className="block text-gray-700 mb-2">
                     <div className="flex items-center gap-2">
                       <MapPin size={18} />
-                      Address
+                      Manzilingiz
                     </div>
                   </label>
                   <textarea
@@ -165,7 +165,7 @@ export function ProfilePage({ onNavigate }) {
                       className="flex-1 py-3 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors flex items-center justify-center gap-2"
                     >
                       <Save size={20} />
-                      Save Changes
+                      O'zgartirishlarni saqlash
                     </button>
                     <button
                       onClick={() => {
@@ -176,7 +176,7 @@ export function ProfilePage({ onNavigate }) {
                       }}
                       className="flex-1 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
                     >
-                      Cancel
+                      Bekor qilish
                     </button>
                   </div>
                 )}
@@ -187,10 +187,10 @@ export function ProfilePage({ onNavigate }) {
             <div className="border-t border-gray-200 p-8">
               <h3 className="mb-4 text-gray-900 flex items-center gap-2">
                 <Package size={20} />
-                Order History
+                Buyurtmalar tarixi
               </h3>
               <div className="text-center py-8 text-gray-500">
-                You haven't placed any orders yet
+                Sizda buyurtmalar tarixi yo'q
               </div>
             </div>
           </div>
