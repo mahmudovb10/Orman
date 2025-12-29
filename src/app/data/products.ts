@@ -1,16 +1,14 @@
 import { Product } from "../context/CartContext";
 
 export const products: Product[] = [
-  // Wooden Furniture
   {
     id: 1,
-    title: "Classic Oak Dining Table",
-    category: "wooden",
-    price: 1200,
+    title: "Merkury",
+    category: "chandelier",
+    price: 1500000,
     description:
       "A stunning handcrafted oak dining table that seats 6-8 people comfortably. Features traditional joinery and a rich, hand-rubbed finish that showcases the natural beauty of oak grain.",
-    image:
-      "https://images.unsplash.com/photo-1687180497278-ca4d736ecc99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjB3b29kZW4lMjBmdXJuaXR1cmV8ZW58MXx8fHwxNzY2MTE4NzA5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "/merkuri.jpg",
     features: [
       "Solid Oak Wood",
       "Seats 6-8 People",
@@ -19,17 +17,16 @@ export const products: Product[] = [
     ],
     material: "Premium Oak",
     dimensions: "200cm x 100cm x 75cm",
-    color: "Natural Oak",
+    color: "Black glass",
   },
   {
     id: 2,
-    title: "Walnut Bookshelf",
-    category: "wooden",
-    price: 850,
+    title: "Yupiter",
+    category: "chandelier",
+    price: 750000,
     description:
       "Elegant walnut bookshelf with adjustable shelves. Perfect for displaying books, art pieces, and decorative items. Features smooth-gliding drawers at the bottom.",
-    image:
-      "https://images.unsplash.com/photo-1759307278083-852eb23b6e98?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b29kZW4lMjBjcmFmdHNtYW5zaGlwJTIwZGV0YWlsfGVufDF8fHx8MTc2NjA4NjczMXww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "/yupiter.jpg",
     features: [
       "Walnut Wood",
       "Adjustable Shelves",
@@ -42,13 +39,12 @@ export const products: Product[] = [
   },
   {
     id: 3,
-    title: "Mahogany Coffee Table",
-    category: "wooden",
-    price: 650,
+    title: "Kosmos aval",
+    category: "chandelier",
+    price: 1700000,
     description:
       "Contemporary coffee table crafted from rich mahogany. Features a lower shelf for storage and elegant tapered legs.",
-    image:
-      "https://images.unsplash.com/photo-1687180497278-ca4d736ecc99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjB3b29kZW4lMjBmdXJuaXR1cmV8ZW58MXx8fHwxNzY2MTE4NzA5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "/kosmos.jpg",
     features: [
       "Mahogany Wood",
       "Storage Shelf",
@@ -56,18 +52,17 @@ export const products: Product[] = [
       "Polished Finish",
     ],
     material: "Mahogany",
-    dimensions: "120cm x 60cm x 45cm",
+    dimensions: "Bo'y 2m, Eni 120sm",
     color: "Rich Brown",
   },
   {
     id: 4,
-    title: "Teak Wood Dresser",
-    category: "wooden",
-    price: 980,
+    title: "Koinot",
+    category: "chandelier",
+    price: 1000000,
     description:
       "Spacious teak dresser with six drawers. Features solid brass hardware and a protective coating for long-lasting beauty.",
-    image:
-      "https://images.unsplash.com/photo-1759307278083-852eb23b6e98?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b29kZW4lMjBjcmFmdHNtYW5zaGlwJTIwZGV0YWlsfGVufDF8fHx8MTc2NjA4NjczMXww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "koinot.jpg",
     features: [
       "Teak Wood",
       "6 Drawers",
@@ -78,83 +73,95 @@ export const products: Product[] = [
     dimensions: "150cm x 50cm x 90cm",
     color: "Golden Teak",
   },
-
-  // Chandeliers
   {
     id: 5,
-    title: "Crystal Grand Chandelier",
+    title: "Koinot ORS",
     category: "chandelier",
-    price: 2500,
+    price: 1300000,
     description:
-      "Magnificent crystal chandelier with cascading tiers. Features premium K9 crystals and accommodates 12 LED bulbs for brilliant illumination.",
-    image:
-      "https://images.unsplash.com/photo-1765118106411-dccdfb21f77d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcnlzdGFsJTIwY2hhbmRlbGllciUyMGVsZWdhbnR8ZW58MXx8fHwxNzY2MDM5MjY3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "Spacious teak dresser with six drawers. Features solid brass hardware and a protective coating for long-lasting beauty.",
+    image: "koinotorsnew.png",
     features: [
-      "K9 Crystal",
-      "12 Light Capacity",
-      "LED Compatible",
-      "Cascading Design",
+      "Teak Wood",
+      "6 Drawers",
+      "Brass Hardware",
+      "Protective Coating",
     ],
-    material: "Crystal & Brass",
-    dimensions: "80cm diameter x 100cm height",
-    color: "Gold & Crystal",
+    material: "Teak",
+    dimensions: "150cm x 50cm x 90cm",
+    color: "Golden Teak",
   },
   {
     id: 6,
-    title: "Modern Brass Chandelier",
+    title: "Kosmos Oq",
     category: "chandelier",
-    price: 1800,
+    price: 1650000,
     description:
-      "Contemporary brass chandelier with geometric design. Features adjustable arms and dimmable LED compatibility.",
-    image:
-      "https://images.unsplash.com/photo-1765118106411-dccdfb21f77d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcnlzdGFsJTIwY2hhbmRlbGllciUyMGVsZWdhbnR8ZW58MXx8fHwxNzY2MDM5MjY3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "Spacious teak dresser with six drawers. Features solid brass hardware and a protective coating for long-lasting beauty.",
+    image: "kosmostunc.jpg",
     features: [
-      "Solid Brass",
-      "Geometric Design",
-      "Adjustable Arms",
-      "Dimmable",
+      "Teak Wood",
+      "6 Drawers",
+      "Brass Hardware",
+      "Protective Coating",
     ],
-    material: "Brass",
-    dimensions: "70cm diameter x 80cm height",
-    color: "Antique Brass",
+    material: "Teak",
+    dimensions: "150cm x 50cm x 90cm",
+    color: "Golden Teak",
   },
   {
     id: 7,
-    title: "Classic Empire Chandelier",
+    title: "Yupiter 2",
     category: "chandelier",
-    price: 2200,
+    price: 1450000,
     description:
-      "Traditional empire-style chandelier with hand-cut crystals. Perfect for grand dining rooms and entryways.",
-    image:
-      "https://images.unsplash.com/photo-1765118106411-dccdfb21f77d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcnlzdGFsJTIwY2hhbmRlbGllciUyMGVsZWdhbnR8ZW58MXx8fHwxNzY2MDM5MjY3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "Spacious teak dresser with six drawers. Features solid brass hardware and a protective coating for long-lasting beauty.",
+    image: "yupitertwo.jpg",
     features: [
-      "Hand-Cut Crystal",
-      "Empire Style",
-      "16 Lights",
-      "Ornate Details",
+      "Teak Wood",
+      "6 Drawers",
+      "Brass Hardware",
+      "Protective Coating",
     ],
-    material: "Crystal & Gold",
-    dimensions: "90cm diameter x 120cm height",
-    color: "Gold & Clear Crystal",
+    material: "Teak",
+    dimensions: "150cm x 50cm x 90cm",
+    color: "Golden Teak",
   },
   {
     id: 8,
-    title: "Mini Crystal Pendant",
+    title: "Yupiter 3",
     category: "chandelier",
-    price: 450,
+    price: 1450000,
     description:
-      "Compact crystal pendant light ideal for smaller spaces. Features sparkling crystals and a polished chrome finish.",
-    image:
-      "https://images.unsplash.com/photo-1765118106411-dccdfb21f77d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcnlzdGFsJTIwY2hhbmRlbGllciUyMGVsZWdhbnR8ZW58MXx8fHwxNzY2MDM5MjY3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "Spacious teak dresser with six drawers. Features solid brass hardware and a protective coating for long-lasting beauty.",
+    image: "yupiterthree.jpg",
     features: [
-      "Compact Design",
-      "Crystal Accents",
-      "Chrome Finish",
-      "Single Light",
+      "Teak Wood",
+      "6 Drawers",
+      "Brass Hardware",
+      "Protective Coating",
     ],
-    material: "Crystal & Chrome",
-    dimensions: "25cm diameter x 40cm height",
-    color: "Chrome & Crystal",
+    material: "Teak",
+    dimensions: "150cm x 50cm x 90cm",
+    color: "Golden Teak",
+  },
+  {
+    id: 9,
+    title: "Yupiter Aval",
+    category: "chandelier",
+    price: 1450000,
+    description:
+      "Spacious teak dresser with six drawers. Features solid brass hardware and a protective coating for long-lasting beauty.",
+    image: "yupiteraval.jpg",
+    features: [
+      "Teak Wood",
+      "6 Drawers",
+      "Brass Hardware",
+      "Protective Coating",
+    ],
+    material: "Teak",
+    dimensions: "150cm x 50cm x 90cm",
+    color: "Golden Teak",
   },
 
   // Sofas

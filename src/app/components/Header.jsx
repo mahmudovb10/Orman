@@ -148,38 +148,38 @@ export function Header({ currentPage, onNavigate }) {
               onClick={() => scrollToSection("home")}
               className="text-gray-700 hover:text-amber-900 transition-colors text-left"
             >
-              Home
+              Bosh sahifa
             </button>
             <button
               onClick={() => handleNavigate("products")}
               className="text-gray-700 hover:text-amber-900 transition-colors text-left"
             >
-              Products
+              Mahsulotlar
             </button>
             <button
               onClick={() => scrollToSection("about")}
               className="text-gray-700 hover:text-amber-900 transition-colors text-left"
             >
-              About
+              Haqida
             </button>
             <button
               onClick={() => scrollToSection("gallery")}
               className="text-gray-700 hover:text-amber-900 transition-colors text-left"
             >
-              Gallery
+              Gallereya
             </button>
             <button
               onClick={() => scrollToSection("contact")}
               className="text-gray-700 hover:text-amber-900 transition-colors text-left"
             >
-              Contact
+              Aloqa
             </button>
             {!isAuthenticated && (
               <button
                 onClick={() => handleNavigate("login")}
                 className="text-gray-700 hover:text-amber-900 transition-colors text-left"
               >
-                Login
+                Tizimga kirish
               </button>
             )}
           </div>

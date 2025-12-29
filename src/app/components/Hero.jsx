@@ -7,6 +7,12 @@ export function Hero() {
     }
   };
 
+  const handleNavigate = (page) => {
+    onNavigate(page);
+    setIsMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <section
       id="home"
@@ -34,7 +40,7 @@ export function Hero() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
-            onClick={() => scrollToSection("products")}
+            onClick={() => handleNavigate("products")}
             className="px-8 py-3 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors flex items-center justify-center gap-2"
           >
             Mahsulotlarni ko'rish

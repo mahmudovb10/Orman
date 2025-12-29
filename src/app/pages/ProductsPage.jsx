@@ -7,9 +7,9 @@ export function ProductsPage({ onProductClick }) {
 
   const categories = [
     { id: "all", label: "Hamma mahsulotlar", icon: null },
-    { id: "wooden", label: "Yog'och mahsulotlar", icon: TreePine },
     { id: "chandelier", label: "Lyustra mahsulotlar", icon: LampCeiling },
-    { id: "sofa", label: "Boshqa", icon: Sofa },
+    { id: "wooden", label: "Yog'och mahsulotlar", icon: TreePine },
+    // { id: "sofa", label: "Boshqa", icon: Sofa },
   ];
 
   const filteredProducts =
@@ -62,7 +62,7 @@ export function ProductsPage({ onProductClick }) {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-4 right-4 bg-amber-900 text-white px-3 py-1 rounded-full">
-                  ${product.price.toLocaleString()}
+                  {product.price.toLocaleString()} So'm
                 </div>
               </div>
 
@@ -84,7 +84,9 @@ export function ProductsPage({ onProductClick }) {
 
         {filteredProducts.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-gray-500">No products found in this category.</p>
+            <p className="text-gray-500">
+              Hozircha bu kategoriyadagi mahsulotlar mavjud emas :(
+            </p>
           </div>
         )}
       </div>
