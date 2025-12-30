@@ -7,7 +7,7 @@ export function ProductsPage({ onProductClick }) {
 
   const categories = [
     { id: "all", label: "Hamma mahsulotlar", icon: null },
-    { id: "chandelier", label: "Lyustra mahsulotlar", icon: LampCeiling },
+    { id: "lyustra", label: "Lyustra mahsulotlar", icon: LampCeiling },
     { id: "wooden", label: "Yog'och mahsulotlar", icon: TreePine },
     // { id: "sofa", label: "Boshqa", icon: Sofa },
   ];
@@ -59,6 +59,7 @@ export function ProductsPage({ onProductClick }) {
                 <img
                   src={product.image}
                   alt={product.title}
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-4 right-4 bg-amber-900 text-white px-3 py-1 rounded-full">
@@ -75,7 +76,7 @@ export function ProductsPage({ onProductClick }) {
                   {product.description}
                 </p>
                 <button className="w-full py-2 bg-amber-900/10 text-amber-900 rounded-lg hover:bg-amber-900 hover:text-white transition-colors">
-                  View Details
+                  Mahsulotni ko'rish
                 </button>
               </div>
             </div>

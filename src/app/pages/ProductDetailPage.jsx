@@ -39,7 +39,7 @@ export function ProductDetailPage({ productId, onBack }) {
           className="flex items-center gap-2 text-gray-700 hover:text-amber-900 transition-colors mb-8"
         >
           <ArrowLeft size={20} />
-          Back to Products
+          Mahsulotlar sahifasiga qaytish
         </button>
 
         <div className="grid lg:grid-cols-2 gap-12 bg-white rounded-2xl p-8 shadow-lg">
@@ -63,7 +63,7 @@ export function ProductDetailPage({ productId, onBack }) {
 
             <div className="mb-6">
               <div className="text-amber-900">
-                ${product.price.toLocaleString()}
+                {product.price.toLocaleString()} So'm
               </div>
             </div>
 
@@ -71,7 +71,7 @@ export function ProductDetailPage({ productId, onBack }) {
 
             {/* Features */}
             <div className="mb-8">
-              <h3 className="mb-4 text-gray-900">Features</h3>
+              <h3 className="mb-4 text-gray-900">Xususiyatlari</h3>
               <div className="grid sm:grid-cols-2 gap-3">
                 {product.features.map((feature, index) => (
                   <div
@@ -89,7 +89,7 @@ export function ProductDetailPage({ productId, onBack }) {
 
             {/* Specifications */}
             <div className="mb-8 p-6 bg-gray-50 rounded-lg">
-              <h3 className="mb-4 text-gray-900">Specifications</h3>
+              <h3 className="mb-4 text-gray-900">Texnik xususiyatlari</h3>
               <div className="space-y-3">
                 {product.material && (
                   <div className="flex justify-between">
@@ -99,13 +99,13 @@ export function ProductDetailPage({ productId, onBack }) {
                 )}
                 {product.dimensions && (
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Dimensions:</span>
+                    <span className="text-gray-600">Razmer:</span>
                     <span className="text-gray-900">{product.dimensions}</span>
                   </div>
                 )}
                 {product.color && (
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Color:</span>
+                    <span className="text-gray-600">Rangi:</span>
                     <span className="text-gray-900">{product.color}</span>
                   </div>
                 )}
@@ -118,12 +118,12 @@ export function ProductDetailPage({ productId, onBack }) {
               className="w-full py-4 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors flex items-center justify-center gap-2 mt-auto"
             >
               <ShoppingCart size={20} />
-              {showSuccess ? "Added to Cart!" : "Add to Cart"}
+              {showSuccess ? "Savatga Qo'shildi !" : "Savatga Qo'shish"}
             </button>
 
             {showSuccess && (
               <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800 text-center">
-                Product successfully added to cart!
+                Mahsulot savatga muvaffaqiyatli qo'shildi!
               </div>
             )}
           </div>
@@ -131,7 +131,7 @@ export function ProductDetailPage({ productId, onBack }) {
 
         {/* Related Products */}
         <div className="mt-16">
-          <h2 className="mb-8 text-amber-900">You May Also Like</h2>
+          <h2 className="mb-8 text-amber-900">Sizga ham yoqishi mumkin</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {products
               .filter(
@@ -156,7 +156,7 @@ export function ProductDetailPage({ productId, onBack }) {
                       {relatedProduct.title}
                     </h4>
                     <div className="text-amber-900">
-                      ${relatedProduct.price.toLocaleString()}
+                      {relatedProduct.price.toLocaleString()} So'm
                     </div>
                   </div>
                 </div>

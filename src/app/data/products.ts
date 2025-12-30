@@ -4,7 +4,7 @@ export const products: Product[] = [
   {
     id: 1,
     title: "Merkury",
-    category: "chandelier",
+    category: "lyustra",
     price: 1500000,
     description:
       "A stunning handcrafted oak dining table that seats 6-8 people comfortably. Features traditional joinery and a rich, hand-rubbed finish that showcases the natural beauty of oak grain.",
@@ -22,7 +22,7 @@ export const products: Product[] = [
   {
     id: 2,
     title: "Yupiter",
-    category: "chandelier",
+    category: "lyustra",
     price: 750000,
     description:
       "Elegant walnut bookshelf with adjustable shelves. Perfect for displaying books, art pieces, and decorative items. Features smooth-gliding drawers at the bottom.",
@@ -40,7 +40,7 @@ export const products: Product[] = [
   {
     id: 3,
     title: "Kosmos aval",
-    category: "chandelier",
+    category: "lyustra",
     price: 1700000,
     description:
       "Contemporary coffee table crafted from rich mahogany. Features a lower shelf for storage and elegant tapered legs.",
@@ -58,10 +58,10 @@ export const products: Product[] = [
   {
     id: 4,
     title: "Koinot",
-    category: "chandelier",
+    category: "lyustra",
     price: 1000000,
     description:
-      "Spacious teak dresser with six drawers. Features solid brass hardware and a protective coating for long-lasting beauty.",
+      "Uyingizni tiniq yoritib beruvchi va o'ziga jalb qiladigan lyustramiz.",
     image: "koinot.jpg",
     features: [
       "Teak Wood",
@@ -76,7 +76,7 @@ export const products: Product[] = [
   {
     id: 5,
     title: "Koinot ORS",
-    category: "chandelier",
+    category: "lyustra",
     price: 1300000,
     description:
       "Spacious teak dresser with six drawers. Features solid brass hardware and a protective coating for long-lasting beauty.",
@@ -94,7 +94,7 @@ export const products: Product[] = [
   {
     id: 6,
     title: "Kosmos Oq",
-    category: "chandelier",
+    category: "lyustra",
     price: 1650000,
     description:
       "Spacious teak dresser with six drawers. Features solid brass hardware and a protective coating for long-lasting beauty.",
@@ -112,7 +112,7 @@ export const products: Product[] = [
   {
     id: 7,
     title: "Yupiter 2",
-    category: "chandelier",
+    category: "lyustra",
     price: 1450000,
     description:
       "Spacious teak dresser with six drawers. Features solid brass hardware and a protective coating for long-lasting beauty.",
@@ -130,7 +130,7 @@ export const products: Product[] = [
   {
     id: 8,
     title: "Yupiter 3",
-    category: "chandelier",
+    category: "lyustra",
     price: 1450000,
     description:
       "Spacious teak dresser with six drawers. Features solid brass hardware and a protective coating for long-lasting beauty.",
@@ -148,7 +148,7 @@ export const products: Product[] = [
   {
     id: 9,
     title: "Yupiter Aval",
-    category: "chandelier",
+    category: "lyustra",
     price: 1450000,
     description:
       "Spacious teak dresser with six drawers. Features solid brass hardware and a protective coating for long-lasting beauty.",

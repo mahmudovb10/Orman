@@ -65,12 +65,14 @@ export function CheckoutPage({ onNavigate }) {
   // ---------------------------
 
   const handlePlaceOrder = () => {
+    if (!phone || !address) {
+      return;
+    }
     if (!isAuthenticated) {
       setShowWarning(true);
       return;
     }
 
-    // Buyurtma tasdiqlanganda email yuborishni chaqiramiz
     sendEmailOrder();
 
     setOrderPlaced(true);
@@ -81,7 +83,6 @@ export function CheckoutPage({ onNavigate }) {
     }, 3000);
   };
 
-  // ... (UI qismi o'zgarishsiz qoladi)
   if (cart.length === 0 && !orderPlaced) {
     return (
       <div className="min-h-screen pt-24 pb-20 bg-gray-50">
@@ -111,19 +112,23 @@ export function CheckoutPage({ onNavigate }) {
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle size={48} className="text-green-600" />
             </div>
-            <h2 className="text-green-600 mb-4">Order Placed Successfully!</h2>
+            <h2 className="text-green-600 mb-4">
+              Buyurtma muvaffaqiyatli topshirildi!
+            </h2>
             <p className="text-gray-600 mb-6">
-              Thank you for your order. We'll send you a confirmation email
-              shortly.
+              Sizga tez orada operatorlarimiz aloqaga chiqishadi !
             </p>
             <div className="space-y-3 text-gray-700">
               <p>
-                Order Total:{" "}
+                Jami Buyurtmalar:{" "}
                 <span className="text-amber-900">
-                  ${(getCartTotal() * 1.1).toLocaleString()}
+                  {(getCartTotal() * 1.1).toLocaleString()} So'm
                 </span>
               </p>
-              <p>Items: {cart.reduce((sum, item) => sum + item.quantity, 0)}</p>
+              <p>
+                Mahsulotlar soni:{" "}
+                {cart.reduce((sum, item) => sum + item.quantity, 0)}
+              </p>
             </div>
           </div>
         </div>
@@ -180,12 +185,12 @@ export function CheckoutPage({ onNavigate }) {
 
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
-            <h1 className="text-amber-900">Checkout</h1>
+            <h1 className="text-amber-900">Rasmiylashtirish</h1>
 
             <div className="bg-white rounded-2xl p-6 shadow-md">
               <div className="flex items-center gap-2 mb-6">
                 <Truck className="text-amber-900" size={24} />
-                <h3 className="text-gray-900">Delivery Information</h3>
+                <h3 className="text-gray-900">Buyurtma qabul qiluvchi</h3>
               </div>
 
               <div className="space-y-4">
@@ -202,7 +207,7 @@ export function CheckoutPage({ onNavigate }) {
 
                 <div>
                   <label className="block text-gray-700 mb-2">
-                    Email Address
+                    Email Manzil
                   </label>
                   <input
                     type="email"
@@ -210,12 +215,13 @@ export function CheckoutPage({ onNavigate }) {
                     onChange={(e) => setEmailAddres(e.target.value)}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900 focus:border-transparent bg-gray-50"
                     placeholder="your@email.com"
+                    required
                   />
                 </div>
 
                 <div>
                   <label className="block text-gray-700 mb-2">
-                    Phone Number
+                    Telefon Raqam
                   </label>
                   <input
                     type="tel"
@@ -223,31 +229,30 @@ export function CheckoutPage({ onNavigate }) {
                     onChange={(e) => setPhone(e.target.value)}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900 focus:border-transparent bg-gray-50"
                     placeholder="+998 (90) 123-45-67"
+                    required
                   />
                 </div>
 
                 <div>
-                  <label className="block text-gray-700 mb-2">
-                    Delivery Address
-                  </label>
+                  <label className="block text-gray-700 mb-2">Manzil</label>
                   <textarea
                     value={address}
                     rows={3}
                     onChange={(e) => setAddress(e.target.value)}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900 focus:border-transparent bg-gray-50 resize-none"
-                    placeholder="Enter your delivery address"
+                    placeholder="Manzilingizni yozing"
                   />
                 </div>
 
                 {isAuthenticated && (!user?.phone || !user?.address) && (
                   <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-800">
-                    Please complete your profile information before placing an
-                    order.{" "}
+                    Iltimos, rasmiylashtirishdan oldin profil ma'lumotlarini
+                    to'ldiring.{" "}
                     <button
                       onClick={() => onNavigate("profile")}
                       className="underline hover:no-underline"
                     >
-                      Update Profile
+                      Profilni Yangilash
                     </button>
                   </div>
                 )}
@@ -257,7 +262,7 @@ export function CheckoutPage({ onNavigate }) {
             <div className="bg-white rounded-2xl p-6 shadow-md">
               <div className="flex items-center gap-2 mb-6">
                 <CreditCard className="text-amber-900" size={24} />
-                <h3 className="text-gray-900">Payment Method</h3>
+                <h3 className="text-gray-900">To'lov qilish usullari</h3>
               </div>
 
               <div className="space-y-3">
@@ -268,11 +273,11 @@ export function CheckoutPage({ onNavigate }) {
                     defaultChecked
                     className="w-4 h-4"
                   />
-                  <span>Cash on Delivery</span>
+                  <span>Buyurtmani qabul qilganimda</span>
                 </label>
                 <label className="flex items-center gap-3 p-4 border border-gray-300 rounded-lg cursor-pointer">
                   <input type="radio" name="payment" className="w-4 h-4" />
-                  <span>Credit/Debit Card (Coming Soon)</span>
+                  <span>Karta orqali ( Tez orada )</span>
                 </label>
               </div>
             </div>
@@ -280,7 +285,7 @@ export function CheckoutPage({ onNavigate }) {
 
           <div className="lg:col-span-1">
             <div className="bg-white rounded-2xl p-6 shadow-md sticky top-24">
-              <h3 className="mb-6 text-gray-900">Order Summary</h3>
+              <h3 className="mb-6 text-gray-900">Buyurtma xulosasi</h3>
 
               <div className="space-y-4 mb-6">
                 {cart.map((item) => (
@@ -292,10 +297,10 @@ export function CheckoutPage({ onNavigate }) {
                     />
                     <div className="flex-1">
                       <h4 className="text-gray-900 mb-1">{item.title}</h4>
-                      <p className="text-gray-600">Qty: {item.quantity}</p>
+                      <p className="text-gray-600">Soni: {item.quantity}</p>
                     </div>
                     <div className="text-amber-900">
-                      ${(item.price * item.quantity).toLocaleString()}
+                      {(item.price * item.quantity).toLocaleString()} So'm
                     </div>
                   </div>
                 ))}
@@ -303,28 +308,33 @@ export function CheckoutPage({ onNavigate }) {
 
               <div className="space-y-3 mb-6 pt-4 border-t border-gray-200">
                 <div className="flex justify-between text-gray-600">
-                  <span>Subtotal</span>
-                  <span>${getCartTotal().toLocaleString()}</span>
+                  <span>Barchasi</span>
+                  <span>{getCartTotal().toLocaleString()} So'm</span>
                 </div>
                 <div className="flex justify-between text-gray-600">
-                  <span>Shipping</span>
+                  <span>Yetkazib berish</span>
                   <span className="text-green-600">Free</span>
                 </div>
                 <div className="flex justify-between text-gray-600">
-                  <span>Tax</span>
-                  <span>${(getCartTotal() * 0.1).toLocaleString()}</span>
+                  {/* <span>Tax</span>
+                  <span>${(getCartTotal() * 0.1).toLocaleString()}</span> */}
                 </div>
                 <div className="flex justify-between text-gray-900 pt-3 border-t border-gray-200">
-                  <span>Total</span>
-                  <span>${(getCartTotal() * 1.1).toLocaleString()}</span>
+                  <span>Hammasi</span>
+                  <span>{(getCartTotal() * 1.1).toLocaleString()} So'm</span>
                 </div>
               </div>
 
               <button
                 onClick={handlePlaceOrder}
-                className="w-full py-4 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors"
+                className={`w-full py-4 rounded-lg transition-colors text-white
+    ${
+      !phone || !address
+        ? "bg-gray-400 cursor-not-allowed"
+        : "bg-amber-900 hover:bg-amber-800"
+    }`}
               >
-                Place Order
+                Buyurtma qilish
               </button>
             </div>
           </div>

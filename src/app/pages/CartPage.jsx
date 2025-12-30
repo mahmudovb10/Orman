@@ -116,10 +116,10 @@ export function CartPage({ onNavigate }) {
                       {/* Price */}
                       <div className="text-right">
                         <div className="text-amber-900">
-                          ${(item.price * item.quantity).toLocaleString()}
+                          {(item.price * item.quantity).toLocaleString()} So'm
                         </div>
                         <div className="text-gray-500">
-                          ${item.price.toLocaleString()} each
+                          {item.price.toLocaleString()} So'm har biri
                         </div>
                       </div>
                     </div>
@@ -139,22 +139,19 @@ export function CartPage({ onNavigate }) {
                 {/* Mahsulotlarning umumiy narxi */}
                 <div className="flex justify-between text-gray-600">
                   <span>Barchasi</span>
-                  <span>${getCartTotal().toLocaleString()}</span>
+                  <span>{getCartTotal().toLocaleString()} So'm</span>
                 </div>
 
                 {/* Yetkazib berish */}
                 <div className="flex justify-between text-gray-600">
                   <span>Yetkazib berish</span>
-                  <span className="text-green-600">Free</span>
+                  <span className="text-green-600">Bepul !</span>
                 </div>
-
-                {/* BU YERDAN TAX QATORI O'CHIRILDI */}
 
                 <div className="border-t border-gray-200 pt-4">
                   <div className="flex justify-between text-gray-900  text-lg">
                     <span>Hammasi</span>
-                    {/* 1.1 ko'paytmasi olib tashlandi, endi faqat sof summa chiqadi */}
-                    <span>${getCartTotal().toLocaleString()}</span>
+                    <span>{getCartTotal().toLocaleString()} So'm</span>
                   </div>
                 </div>
               </div>
