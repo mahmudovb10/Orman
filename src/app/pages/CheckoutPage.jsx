@@ -23,45 +23,39 @@ export function CheckoutPage({ onNavigate }) {
 
   // --- EMAILJS FUNKSIYASI ---
   const sendEmailOrder = () => {
-    // 1. Mahsulotlar ro'yxatini shablondagi {{name}}, {{units}}, {{price}} ga moslaymiz
     const ordersArray = cart.map((item) => ({
       name: item.title,
       units: item.quantity,
       price: (item.price * item.quantity).toLocaleString(),
-      item: item.image, // Agar shablondagi rasm chiqishini xohlasangiz
+      image_url: item.image, // PUBLIC URL bo‘lishi shart
     }));
 
-    // 2. Ma'lumotlarni EmailJS kutayotgan "Nested Object" formatida tayyorlaymiz
     const templateParams = {
-      order_id: Math.floor(Math.random() * 1000000).toString(),
-      user_name: user?.name || "Mijoz",
-      user_phone: phone,
-      user_address: address,
-      email: user?.email, // Pastdagi "The email was sent to {{email}}" uchun
-      orders: ordersArray, // {{#orders}} loopi uchun
+      order_id: Math.floor(Math.random() * 1000000),
 
-      // MUHIM: EmailJS {{cost.total}} ni tushunishi uchun ob'ekt ichida ob'ekt yuboramiz
+      customer_name: fullName,
+      customer_phone: phone,
+      customer_email: emailAddress,
+      customer_address: address,
+
+      email: emailAddress,
+
+      orders: ordersArray,
+
       cost: {
-        shipping: "0.00",
-        tax: "0",
-        total: (getCartTotal() * 1.1).toLocaleString(),
+        shipping: "Free",
+        total: getCartTotal().toLocaleString(),
       },
     };
 
-    emailjs
-      .send(
-        "service_1uq66yb",
-        "template_uewwyfv",
-        templateParams,
-        "nIdfdldPYcfb5buo5"
-      )
-      .then((res) => {
-        console.log("Email yuborildi!", res.status, res.text);
-      })
-      .catch((err) => {
-        console.error("422 Xatoligi yuz berdi. Tafsilot:", err);
-      });
+    emailjs.send(
+      "service_1uq66yb",
+      "template_uewwyfv",
+      templateParams,
+      "nIdfdldPYcfb5buo5"
+    );
   };
+
   // ---------------------------
 
   const handlePlaceOrder = () => {
@@ -195,7 +189,9 @@ export function CheckoutPage({ onNavigate }) {
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-gray-700 mb-2">Full Name</label>
+                  <label className="block text-gray-700 mb-2">
+                    To'liq Ism Familiya
+                  </label>
                   <input
                     type="text"
                     value={fullName}
