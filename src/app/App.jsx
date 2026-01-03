@@ -35,16 +35,20 @@ export default function App() {
         <div className="min-h-screen">
           <Header currentPage={currentPage} onNavigate={handleNavigate} />
           <main>
-            {currentPage === "home" && <HomePage />}
+            {/* O'ZGARTIRILDI: onNavigate prop qo'shildi */}
+            {currentPage === "home" && <HomePage onNavigate={handleNavigate} />}
+
             {currentPage === "products" && (
               <ProductsPage onProductClick={handleProductClick} />
             )}
+
             {currentPage === "product-detail" && selectedProductId && (
               <ProductDetailPage
                 productId={selectedProductId}
                 onBack={handleBackToProducts}
               />
             )}
+
             {currentPage === "cart" && <CartPage onNavigate={handleNavigate} />}
             {currentPage === "checkout" && (
               <CheckoutPage onNavigate={handleNavigate} />

@@ -184,7 +184,7 @@ export function ProfilePage({ onNavigate }) {
             </div>
 
             {/* Order History */}
-            <div className="border-t border-gray-200 p-8">
+            {/* <div className="border-t border-gray-200 p-8">
               <h3 className="mb-4 text-gray-900 flex items-center gap-2">
                 <Package size={20} />
                 Buyurtmalar tarixi
@@ -192,7 +192,7 @@ export function ProfilePage({ onNavigate }) {
               <div className="text-center py-8 text-gray-500">
                 Sizda buyurtmalar tarixi yo'q
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

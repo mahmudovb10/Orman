@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
-export function Hero() {
+
+export function Hero({ onNavigate }) {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -7,10 +8,13 @@ export function Hero() {
     }
   };
 
-  const handleNavigate = (page) => {
-    onNavigate(page);
-    setIsMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const handleExploreProducts = () => {
+    // App.jsx dagi handleNavigate funksiyasini ishga tushiradi
+    if (onNavigate) {
+      onNavigate("products");
+      // Sahifa almashgach, tepaga skroll qiladi
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (
@@ -40,7 +44,7 @@ export function Hero() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
-            onClick={() => handleNavigate("products")}
+            onClick={handleExploreProducts}
             className="px-8 py-3 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors flex items-center justify-center gap-2"
           >
             Mahsulotlarni ko'rish

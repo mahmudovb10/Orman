@@ -3,10 +3,10 @@ import { About } from "../components/About";
 import { Gallery } from "../components/Gallery";
 import { Contact } from "../components/Contact";
 
-export function HomePage() {
+export function HomePage({ onNavigate }) {
   return (
     <>
-      <Hero />
+      <Hero onNavigate={onNavigate} />
       <About />
       <Gallery />
       <Contact />
