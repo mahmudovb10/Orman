@@ -165,70 +165,70 @@ export const products: Product[] = [
   },
 
   // Sofas
-  {
-    id: 9,
-    title: "Luxury Velvet Sofa",
-    category: "sofa",
-    price: 3200,
-    description:
-      "Sumptuous velvet sofa with deep cushioning and solid wood frame. Features removable cushions and stain-resistant fabric treatment.",
-    image:
-      "https://images.unsplash.com/photo-1759722668253-1767030ad9b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBzb2ZhJTIwbGl2aW5nJTIwcm9vbXxlbnwxfHx8fDE3NjYxMTg3MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    features: [
-      "Premium Velvet",
-      "Deep Cushioning",
-      "Wood Frame",
-      "Stain Resistant",
-    ],
-    material: "Velvet & Hardwood",
-    dimensions: "220cm x 95cm x 85cm",
-    color: "Emerald Green",
-  },
-  {
-    id: 10,
-    title: "Leather Sectional Sofa",
-    category: "sofa",
-    price: 4500,
-    description:
-      "Spacious L-shaped sectional in top-grain leather. Features reclining seats and built-in USB charging ports.",
-    image:
-      "https://images.unsplash.com/photo-1759722668253-1767030ad9b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBzb2ZhJTIwbGl2aW5nJTIwcm9vbXxlbnwxfHx8fDE3NjYxMTg3MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    features: ["Top-Grain Leather", "Reclining Seats", "USB Ports", "L-Shaped"],
-    material: "Leather",
-    dimensions: "280cm x 180cm x 90cm",
-    color: "Chocolate Brown",
-  },
-  {
-    id: 11,
-    title: "Mid-Century Modern Sofa",
-    category: "sofa",
-    price: 2800,
-    description:
-      "Iconic mid-century design with button tufting and tapered wooden legs. Upholstered in durable fabric.",
-    image:
-      "https://images.unsplash.com/photo-1759722668253-1767030ad9b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBzb2ZhJTIwbGl2aW5nJTIwcm9vbXxlbnwxfHx8fDE3NjYxMTg3MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    features: [
-      "Button Tufting",
-      "Wooden Legs",
-      "Mid-Century Style",
-      "Durable Fabric",
-    ],
-    material: "Fabric & Wood",
-    dimensions: "200cm x 88cm x 82cm",
-    color: "Charcoal Gray",
-  },
-  {
-    id: 12,
-    title: "Contemporary Loveseat",
-    category: "sofa",
-    price: 1600,
-    description:
-      "Compact two-seater perfect for apartments. Features plush cushions and modern clean lines.",
-    image:
-      "https://images.unsplash.com/photo-1759722668253-1767030ad9b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBzb2ZhJTIwbGl2aW5nJTIwcm9vbXxlbnwxfHx8fDE3NjYxMTg3MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    features: ["Compact Size", "Plush Cushions", "Modern Design", "2-Seater"],
-    material: "Linen Blend",
-    dimensions: "150cm x 85cm x 80cm",
-    color: "Light Beige",
-  },
+  //   {
+  //     id: 9,
+  //     title: "Luxury Velvet Sofa",
+  //     category: "sofa",
+  //     price: 3200,
+  //     description:
+  //       "Sumptuous velvet sofa with deep cushioning and solid wood frame. Features removable cushions and stain-resistant fabric treatment.",
+  //     image:
+  //       "https://images.unsplash.com/photo-1759722668253-1767030ad9b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBzb2ZhJTIwbGl2aW5nJTIwcm9vbXxlbnwxfHx8fDE3NjYxMTg3MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  //     features: [
+  //       "Premium Velvet",
+  //       "Deep Cushioning",
+  //       "Wood Frame",
+  //       "Stain Resistant",
+  //     ],
+  //     material: "Velvet & Hardwood",
+  //     dimensions: "220cm x 95cm x 85cm",
+  //     color: "Emerald Green",
+  //   },
+  //   {
+  //     id: 10,
+  //     title: "Leather Sectional Sofa",
+  //     category: "sofa",
+  //     price: 4500,
+  //     description:
+  //       "Spacious L-shaped sectional in top-grain leather. Features reclining seats and built-in USB charging ports.",
+  //     image:
+  //       "https://images.unsplash.com/photo-1759722668253-1767030ad9b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBzb2ZhJTIwbGl2aW5nJTIwcm9vbXxlbnwxfHx8fDE3NjYxMTg3MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  //     features: ["Top-Grain Leather", "Reclining Seats", "USB Ports", "L-Shaped"],
+  //     material: "Leather",
+  //     dimensions: "280cm x 180cm x 90cm",
+  //     color: "Chocolate Brown",
+  //   },
+  //   {
+  //     id: 11,
+  //     title: "Mid-Century Modern Sofa",
+  //     category: "sofa",
+  //     price: 2800,
+  //     description:
+  //       "Iconic mid-century design with button tufting and tapered wooden legs. Upholstered in durable fabric.",
+  //     image:
+  //       "https://images.unsplash.com/photo-1759722668253-1767030ad9b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBzb2ZhJTIwbGl2aW5nJTIwcm9vbXxlbnwxfHx8fDE3NjYxMTg3MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  //     features: [
+  //       "Button Tufting",
+  //       "Wooden Legs",
+  //       "Mid-Century Style",
+  //       "Durable Fabric",
+  //     ],
+  //     material: "Fabric & Wood",
+  //     dimensions: "200cm x 88cm x 82cm",
+  //     color: "Charcoal Gray",
+  //   },
+  //   {
+  //     id: 12,
+  //     title: "Contemporary Loveseat",
+  //     category: "sofa",
+  //     price: 1600,
+  //     description:
+  //       "Compact two-seater perfect for apartments. Features plush cushions and modern clean lines.",
+  //     image:
+  //       "https://images.unsplash.com/photo-1759722668253-1767030ad9b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBzb2ZhJTIwbGl2aW5nJTIwcm9vbXxlbnwxfHx8fDE3NjYxMTg3MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  //     features: ["Compact Size", "Plush Cushions", "Modern Design", "2-Seater"],
+  //     material: "Linen Blend",
+  //     dimensions: "150cm x 85cm x 80cm",
+  //     color: "Light Beige",
+  //   },
 ];
