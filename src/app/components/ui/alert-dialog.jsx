@@ -1,6 +1,7 @@
 "use client";
 
-import * as React from "react";
+// Foydalanuvchi agar hisob ochmasdan turib mahsulotlarni rasmiylashtirmoqchi bo'lsa ochiladigan modal ishlashi uchun
+
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 
 import { cn } from "./utils";
