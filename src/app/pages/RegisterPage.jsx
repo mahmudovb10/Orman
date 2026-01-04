@@ -2,6 +2,7 @@ import { useState } from "react";
 import { UserPlus, Mail, Lock, User, AlertCircle } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { HelpCircle } from "lucide-react";
+import { Helmet } from "react-helmet";
 
 export function RegisterPage({ onNavigate }) {
   const [name, setName] = useState("");
