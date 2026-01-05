@@ -21,9 +21,8 @@ export function Footer() {
               <span className="text-white">Orman Company</span>
             </div>
             <p className="text-white/70 mb-4">
-              Uzbekistan's largest manufacturer of premium wooden furniture,
-              elegant chandeliers, and luxury sofas. Crafting excellence since
-              our inception.
+              O'zbekistondagi eng yirik yog'och va hashamatli lyustra ishlab
+              chiqaruvchisi.
             </p>
             <div className="flex gap-4">
               <a
@@ -49,7 +48,7 @@ export function Footer() {
 
           {/* Products */}
           <div>
-            <h4 className="mb-4 text-white">Our Products</h4>
+            <h4 className="mb-4 text-white">Mahsulotlarimiz</h4>
             <ul className="space-y-2">
               <li>
                 <a
@@ -57,7 +56,7 @@ export function Footer() {
                   className="text-white/70 hover:text-white transition-colors flex items-center gap-2"
                 >
                   <TreePine size={16} />
-                  Wooden Furniture
+                  Yog'och mahsulotlar
                 </a>
               </li>
               <li>
@@ -66,16 +65,7 @@ export function Footer() {
                   className="text-white/70 hover:text-white transition-colors flex items-center gap-2"
                 >
                   <LampCeiling size={16} />
-                  Chandeliers
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#products"
-                  className="text-white/70 hover:text-white transition-colors flex items-center gap-2"
-                >
-                  <Sofa size={16} />
-                  Luxury Sofas
+                  Lyustralar
                 </a>
               </li>
             </ul>
@@ -90,7 +80,7 @@ export function Footer() {
                   href="#home"
                   className="text-white/70 hover:text-white transition-colors"
                 >
-                  Home
+                  Bosh sahifa
                 </a>
               </li>
               <li>
@@ -98,7 +88,7 @@ export function Footer() {
                   href="#about"
                   className="text-white/70 hover:text-white transition-colors"
                 >
-                  About Us
+                  Haqida
                 </a>
               </li>
               <li>
@@ -106,7 +96,7 @@ export function Footer() {
                   href="#gallery"
                   className="text-white/70 hover:text-white transition-colors"
                 >
-                  Gallery
+                  Galareya
                 </a>
               </li>
               <li>
@@ -114,7 +104,7 @@ export function Footer() {
                   href="#contact"
                   className="text-white/70 hover:text-white transition-colors"
                 >
-                  Contact
+                  Bog'lanish
                 </a>
               </li>
             </ul>
@@ -122,10 +112,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 text-center text-white/50">
-          <p>
-            © 2024 Orman Company. All rights reserved. Proudly crafted in
-            Uzbekistan.
-          </p>
+          <p>© 2025 Orman kompaniyasi. Barcha huquqlar himoyalangan.</p>
         </div>
       </div>
     </footer>

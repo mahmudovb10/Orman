@@ -88,7 +88,7 @@ export function Contact() {
             {/* Map Placeholder */}
             <div className="h-64 bg-gray-200 rounded-2xl overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1677156811762-842312963ecd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1emJla2lzdGFuJTIwYXJjaGl0ZWN0dXJlfGVufDF8fHx8MTc2NjA1OTc2MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                src="/logo.jpg"
                 alt="Location"
                 className="w-full h-full object-cover"
               />

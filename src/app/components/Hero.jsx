@@ -38,9 +38,9 @@ export function Hero({ onNavigate }) {
             Yog'ochdan hunarmandchilikning mukammalligi
           </h1>
           <p className="max-w-2xl mx-auto mb-8 text-white/90">
-            O'zbekistonda hashamatli yog'och mebellar va nafis qandillar ishlab
-            chiqaruvchi yetakchi kompaniya. An'anaviy hunarmandchilik va
-            zamonaviy dizaynning mukammal uyg'unligini his eting.
+            O'zbekistonda hashamatli lyustralar ishlab chiqaruvchi yetakchi
+            kompaniya. An'anaviy hunarmandchilik va zamonaviy dizaynning
+            mukammal uyg'unligini his eting.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button

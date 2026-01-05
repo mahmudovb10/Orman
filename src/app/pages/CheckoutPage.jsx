@@ -82,15 +82,15 @@ export function CheckoutPage({ onNavigate }) {
       <div className="min-h-screen pt-24 pb-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center py-20">
-            <h2 className="mb-4 text-gray-900">Your cart is empty</h2>
+            <h2 className="mb-4 text-gray-900">Savatingiz boʻsh</h2>
             <p className="text-gray-600 mb-8">
-              Add some products to your cart before checking out.
+              Tekshirishdan oldin mahsulotlarni savatga qo'shing.
             </p>
             <button
               onClick={() => onNavigate("products")}
               className="px-8 py-3 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors"
             >
-              Browse Products
+              Mahsulotlarni ko'rish
             </button>
           </div>
         </div>
@@ -148,29 +148,30 @@ export function CheckoutPage({ onNavigate }) {
                 <AlertCircle size={32} className="text-red-600" />
               </div>
               <h3 className="text-center mb-4 text-gray-900">
-                Account Required
+                Hisob talab qilinadi
               </h3>
               <p className="text-center text-gray-600 mb-6">
-                You need to create an account or login to place an order.
+                Buyurtma berish uchun hisob yaratish yoki tizimga kirishingiz
+                kerak.
               </p>
               <div className="space-y-3">
                 <button
                   onClick={() => onNavigate("register")}
                   className="w-full py-3 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors"
                 >
-                  Create Account
+                  Hisob yaratish
                 </button>
                 <button
                   onClick={() => onNavigate("login")}
                   className="w-full py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
                 >
-                  Login
+                  Kirish
                 </button>
                 <button
                   onClick={() => setShowWarning(false)}
                   className="w-full py-3 text-gray-600 hover:text-gray-800 transition-colors"
                 >
-                  Cancel
+                  Bekor qilish
                 </button>
               </div>
             </div>
@@ -201,7 +202,7 @@ export function CheckoutPage({ onNavigate }) {
                   />
                 </div>
 
-                <div>
+                {/* <div>
                   <label className="block text-gray-700 mb-2">
                     Email Manzil
                   </label>
@@ -213,7 +214,7 @@ export function CheckoutPage({ onNavigate }) {
                     placeholder="your@email.com"
                     required
                   />
-                </div>
+                </div> */}
 
                 <div>
                   <label className="block text-gray-700 mb-2">
