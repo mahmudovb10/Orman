@@ -5,22 +5,22 @@ export function About() {
     {
       icon: Award,
       value: "#1",
-      label: "Manufacturer in Uzbekistan",
+      label: "O'zbekistonda ishlab chiqaruvchi",
     },
     {
       icon: Users,
-      value: "500+",
-      label: "Skilled Craftsmen",
+      value: "50+",
+      label: "Malakali hunarmandlar",
     },
     {
       icon: Factory,
       value: "15+",
-      label: "Years of Excellence",
+      label: "Mukammallik yillari",
     },
     {
       icon: TrendingUp,
       value: "10k+",
-      label: "Happy Customers",
+      label: "Baxtli mijozlar",
     },
   ];
 
@@ -30,17 +30,17 @@ export function About() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div>
-            <h2 className="mb-6 text-amber-900">About Orman Company</h2>
+            <h2 className="mb-6 text-amber-900">Orman kompaniyasi haqida</h2>
             <p className="text-gray-600 mb-6">
-              O‘zbekistondagi eng yirik va eng ishonchli yog‘och mebellar,
-              qandillar va divanlar ishlab chiqaruvchi “Orman” kompaniyasi
-              tashkil etilganimizdan beri sifat va mahorat standartini belgilab
+              O‘zbekistondagi eng yirik va eng ishonchli yog‘och mahsulotlari va
+              lyustralar ishlab chiqaruvchi “Orman” kompaniyasi tashkil
+              etilganimizdan beri sifat va mahorat standartini belgilab
               kelmoqda.
             </p>
             <p className="text-gray-600 mb-6">
               Bizning mukammallikka sodiqligimiz biz yaratgan har bir asarimizda
               yaqqol ko'rinadi. Biz an'anaviy yog'ochga ishlov berish usullarini
-              birlashtiramiz qandillar va yog'och mahsulotlarini yaratish uchun
+              birlashtiramiz lyustra va yog'och mahsulotlarini yaratish uchun
               zamonaviy dizayn sezgirliklari bilan avlodlar bu vaqt sinovidan
               o'tadi.
             </p>

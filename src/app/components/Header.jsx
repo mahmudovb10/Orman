@@ -44,7 +44,7 @@ export function Header({ currentPage, onNavigate }) {
             <div className="w-10 h-10  rounded-lg flex items-center justify-center">
               <img src="/logo.jpg" alt="" className="site__logo" />
             </div>
-            <span className="text-amber-900">Orman</span>
+            <span className="text-amber-900">O'rman</span>
           </button>
 
           {/* Desktop Navigation */}
