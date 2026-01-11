@@ -1,180 +1,152 @@
 import { useState } from "react";
-import { UserPlus, Mail, Lock, User, AlertCircle } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { Mail, Lock, User, ArrowRight } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
-import { HelpCircle } from "lucide-react";
-import { Helmet } from "react-helmet";
 
-export function RegisterPage({ onNavigate }) {
+export function RegisterPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const { register } = useAuth();
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const { register, googleLogin } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
-
-    if (!name || !email || !password || !confirmPassword) {
-      setError("Please fill in all fields");
-      return;
+    try {
+      setError("");
+      setLoading(true);
+      await register(email, password, name);
+      navigate("/");
+    } catch (err) {
+      setError("Ro'yxatdan o'tishda xatolik: " + err.message);
+    } finally {
+      setLoading(false);
     }
+  };
 
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
-
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters long");
-      return;
-    }
-
-    const success = register(name, email, password);
-    if (success) {
-      onNavigate("home");
-    } else {
-      setError("Email already exists");
+  const handleGoogleSignUp = async () => {
+    try {
+      setError("");
+      const success = await googleLogin();
+      if (success) {
+        navigate("/");
+      }
+    } catch (err) {
+      console.error(err);
+      setError("Google orqali kirishda muammo yuz berdi.");
     }
   };
 
   return (
-    <>
-      <Helmet>
-        <title>Orman | Hisob Yaratish</title>
-        <meta
-          name="description"
-          content="Hisob yarating va mahsulotlarimizni muammosiz buyurtma qiling!"
-        />
-      </Helmet>
-      <div className="min-h-screen pt-24 pb-20 bg-gray-50 flex items-center justify-center">
-        <div className="container mx-auto px-4">
-          <div className="max-w-md mx-auto bg-white rounded-2xl shadow-lg p-8">
-            <div className="text-center mb-8">
-              <div className="w-16 h-16 bg-amber-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                <UserPlus size={32} className="text-white" />
-              </div>
-              <h1 className="text-amber-900 mb-2">Hisob yaratish</h1>
-              <p className="text-gray-600">
-                Buyurtma berish uchun ro'yxatdan o'ting
-              </p>
-            </div>
+    <div className="min-h-screen pt-24 pb-12 flex items-center justify-center bg-gray-50 px-4">
+      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold text-amber-900">Hisob ochish</h2>
+          <p className="text-gray-600 mt-2">Ma'lumotlaringizni kiriting</p>
+        </div>
 
-            {error && (
-              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-800">
-                <AlertCircle size={20} />
-                <span>{error}</span>
-              </div>
-            )}
+        {error && (
+          <div className="mb-4 p-3 bg-red-50 text-red-600 border border-red-200 rounded-lg text-sm">
+            {error}
+          </div>
+        )}
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-gray-700 mb-2">
-                  To'liq Ism Familiyangiz
-                </label>
-                <div className="relative">
-                  <User
-                    className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
-                    size={20}
-                  />
-                  <input
-                    type="text"
-                    id="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900 focus:border-transparent"
-                    placeholder="John Doe"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-gray-700 mb-2">
-                  Email manzilingiz
-                </label>
-                <div className="relative">
-                  <Mail
-                    className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
-                    size={20}
-                  />
-                  <input
-                    type="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900 focus:border-transparent"
-                    placeholder="your@email.com"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="password" className="block text-gray-700 mb-2">
-                  Password
-                </label>
-                <div className="relative">
-                  <Lock
-                    className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
-                    size={20}
-                  />
-                  <input
-                    type="password"
-                    id="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900 focus:border-transparent"
-                    placeholder="••••••••"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="confirmPassword"
-                  className="block text-gray-700 mb-2"
-                >
-                  Confirm Password
-                </label>
-                <div className="relative">
-                  <Lock
-                    className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
-                    size={20}
-                  />
-                  <input
-                    type="password"
-                    id="confirmPassword"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900 focus:border-transparent"
-                    placeholder="••••••••"
-                  />
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-4 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors flex items-center justify-center gap-2"
-              >
-                <UserPlus size={20} />
-                Hisob yaratish
-              </button>
-            </form>
-
-            <div className="mt-6 text-center">
-              <p className="text-gray-600">
-                Allaqachon hisobingiz bormi?{" "}
-                <button
-                  onClick={() => onNavigate("login")}
-                  className="text-amber-900 hover:underline"
-                >
-                  Kirish
-                </button>
-              </p>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              To'liq ism
+            </label>
+            <div className="relative">
+              <User className="absolute left-3 top-3 text-gray-400" size={20} />
+              <input
+                type="text"
+                required
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-900 outline-none"
+                placeholder="Ismingizni kiriting"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
             </div>
           </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Email
+            </label>
+            <div className="relative">
+              <Mail className="absolute left-3 top-3 text-gray-400" size={20} />
+              <input
+                type="email"
+                required
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-900 outline-none"
+                placeholder="example@mail.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Parol
+            </label>
+            <div className="relative">
+              <Lock className="absolute left-3 top-3 text-gray-400" size={20} />
+              <input
+                type="password"
+                required
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-900 outline-none"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <button
+            disabled={loading}
+            type="submit"
+            className="w-full py-3 bg-amber-900 text-white rounded-lg font-bold hover:bg-amber-800 transition-colors flex items-center justify-center gap-2"
+          >
+            {loading ? "Yuklanmoqda..." : "Ro'yxatdan o'tish"}{" "}
+            <ArrowRight size={20} />
+          </button>
+        </form>
+
+        <div className="relative my-8">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-gray-300"></div>
+          </div>
+          <div className="relative flex justify-center text-sm">
+            <span className="px-2 bg-white text-gray-500">Yoki</span>
+          </div>
         </div>
+
+        <button
+          onClick={handleGoogleSignUp}
+          className="w-full py-3 border border-gray-300 rounded-lg flex items-center justify-center gap-3 hover:bg-gray-50 transition-colors"
+        >
+          <img
+            src="https://www.svgrepo.com/show/355037/google.svg"
+            className="w-5 h-5"
+            alt="Google"
+          />
+          Google bilan davom etish
+        </button>
+
+        <p className="mt-8 text-center text-gray-600">
+          Akkauntingiz bormi?{" "}
+          <Link
+            to="/login"
+            className="text-amber-900 font-bold hover:underline"
+          >
+            Kirish
+          </Link>
+        </p>
       </div>
-    </>
+    </div>
   );
 }

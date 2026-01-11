@@ -7,3 +7,7 @@ body {
 .site__logo {
   border-radius: 50%;
 }
+
+.googleBtn {
+  cursor: pointer;
+}
