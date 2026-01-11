@@ -163,6 +163,40 @@ export const products: Product[] = [
     dimensions: "150cm x 50cm x 90cm",
     color: "Golden Teak",
   },
+  {
+    id: 10,
+    title: "Elita Gold",
+    category: "lyustra",
+    price: 1450000,
+    description: "Uyingizga o'zgacha dizayn berib turuvchi lyustramiz",
+    image: "elitagold.jpg",
+    features: [
+      "Teak Wood",
+      "6 Drawers",
+      "Brass Hardware",
+      "Protective Coating",
+    ],
+    material: "Teak",
+    dimensions: "150cm x 50cm x 90cm",
+    color: "Golden Teak",
+  },
+  {
+    id: 11,
+    title: "Elita Mokriy",
+    category: "lyustra",
+    price: 1450000,
+    description: "Uyingizga o'zgacha dizayn berib turuvchi lyustramiz",
+    image: "elitabronze.jpg",
+    features: [
+      "Teak Wood",
+      "6 Drawers",
+      "Brass Hardware",
+      "Protective Coating",
+    ],
+    material: "Teak",
+    dimensions: "150cm x 50cm x 90cm",
+    color: "Golden Teak",
+  },
 
   // Sofas
   //   {

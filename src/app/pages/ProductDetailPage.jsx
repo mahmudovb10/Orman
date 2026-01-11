@@ -1,25 +1,23 @@
 import { useState } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, ShoppingCart, Check } from "lucide-react";
 import { products } from "../data/products";
 import { useCart } from "../context/CartContext";
 
-export function ProductDetailPage({ productId, onBack }) {
-  const product = products.find((p) => p.id === productId);
+export function ProductDetailPage() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const product = products.find((p) => p.id === parseInt(id));
   const { addToCart } = useCart();
   const [showSuccess, setShowSuccess] = useState(false);
 
   if (!product) {
     return (
-      <div className="min-h-screen pt-24 pb-20">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-gray-600 mb-4">Product not found</p>
-          <button
-            onClick={onBack}
-            className="px-6 py-3 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors"
-          >
-            Back to Products
-          </button>
-        </div>
+      <div className="pt-32 text-center">
+        Mahsulot topilmadi.{" "}
+        <Link to="/products" className="text-amber-900">
+          Ortga qaytish
+        </Link>
       </div>
     );
   }
@@ -33,134 +31,38 @@ export function ProductDetailPage({ productId, onBack }) {
   return (
     <div className="min-h-screen pt-24 pb-20 bg-gray-50">
       <div className="container mx-auto px-4">
-        {/* Back Button */}
         <button
-          onClick={onBack}
-          className="flex items-center gap-2 text-gray-700 hover:text-amber-900 transition-colors mb-8"
+          onClick={() => navigate(-1)}
+          className="flex items-center gap-2 text-gray-700 mb-8"
         >
-          <ArrowLeft size={20} />
-          Mahsulotlar sahifasiga qaytish
+          <ArrowLeft size={20} /> Orqaga
         </button>
-
         <div className="grid lg:grid-cols-2 gap-12 bg-white rounded-2xl p-8 shadow-lg">
-          {/* Product Image */}
-          <div className="relative">
-            <div className="aspect-square rounded-xl overflow-hidden">
-              <img
-                src={product.image}
-                alt={product.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-
-          {/* Product Info */}
+          <img
+            src={product.image}
+            alt={product.title}
+            className="w-full h-[400px] object-cover rounded-xl"
+          />
           <div className="flex flex-col">
-            <div className="text-amber-900 uppercase tracking-wide mb-2">
+            <span className="text-amber-700 text-sm uppercase">
               {product.category}
-            </div>
-            <h1 className="mb-4 text-amber-900">{product.title}</h1>
-
-            <div className="mb-6">
-              <div className="text-amber-900">
-                {product.price.toLocaleString()} So'm
-              </div>
-            </div>
-
+            </span>
+            <h1 className="text-3xl font-bold text-amber-900 my-4">
+              {product.title}
+            </h1>
+            <p className="text-2xl font-bold text-amber-900 mb-6">
+              {product.price.toLocaleString()} So'm
+            </p>
             <p className="text-gray-600 mb-8">{product.description}</p>
-
-            {/* Features */}
-            <div className="mb-8">
-              <h3 className="mb-4 text-gray-900">Xususiyatlari</h3>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {product.features.map((feature, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-2 text-gray-700"
-                  >
-                    <div className="w-5 h-5 bg-amber-900/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Check size={14} className="text-amber-900" />
-                    </div>
-                    {feature}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Specifications */}
-            <div className="mb-8 p-6 bg-gray-50 rounded-lg">
-              <h3 className="mb-4 text-gray-900">Texnik xususiyatlari</h3>
-              <div className="space-y-3">
-                {product.material && (
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Material:</span>
-                    <span className="text-gray-900">{product.material}</span>
-                  </div>
-                )}
-                {product.dimensions && (
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Razmer:</span>
-                    <span className="text-gray-900">{product.dimensions}</span>
-                  </div>
-                )}
-                {product.color && (
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Rangi:</span>
-                    <span className="text-gray-900">{product.color}</span>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Add to Cart Button */}
             <button
               onClick={handleAddToCart}
-              className="w-full py-4 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors flex items-center justify-center gap-2 mt-auto"
+              className={`w-full py-4 rounded-lg flex items-center justify-center gap-2 transition-all ${
+                showSuccess ? "bg-green-600" : "bg-amber-900"
+              } text-white`}
             >
-              <ShoppingCart size={20} />
-              {showSuccess ? "Savatga Qo'shildi !" : "Savatga Qo'shish"}
+              <ShoppingCart size={20} />{" "}
+              {showSuccess ? "Savatga Qo'shildi!" : "Savatga Qo'shish"}
             </button>
-
-            {showSuccess && (
-              <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800 text-center">
-                Mahsulot savatga muvaffaqiyatli qo'shildi!
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Related Products */}
-        <div className="mt-16">
-          <h2 className="mb-8 text-amber-900">Sizga ham yoqishi mumkin</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {products
-              .filter(
-                (p) => p.category === product.category && p.id !== product.id
-              )
-              .slice(0, 4)
-              .map((relatedProduct) => (
-                <div
-                  key={relatedProduct.id}
-                  onClick={onBack}
-                  className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow cursor-pointer"
-                >
-                  <div className="h-48 overflow-hidden">
-                    <img
-                      src={relatedProduct.image}
-                      alt={relatedProduct.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h4 className="text-gray-900 mb-2">
-                      {relatedProduct.title}
-                    </h4>
-                    <div className="text-amber-900">
-                      {relatedProduct.price.toLocaleString()} So'm
-                    </div>
-                  </div>
-                </div>
-              ))}
           </div>
         </div>
       </div>

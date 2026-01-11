@@ -1,4 +1,9 @@
-import { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
 import { Header } from "./components/Header";
@@ -13,58 +18,32 @@ import { RegisterPage } from "./pages/RegisterPage";
 import { ProfilePage } from "./pages/ProfilePage";
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState("home");
-  const [selectedProductId, setSelectedProductId] = useState(null);
-
-  const handleNavigate = (page) => {
-    setCurrentPage(page);
-  };
-
-  const handleProductClick = (productId) => {
-    setSelectedProductId(productId);
-    setCurrentPage("product-detail");
-  };
-
-  const handleBackToProducts = () => {
-    setCurrentPage("products");
-  };
-
   return (
     <AuthProvider>
       <CartProvider>
-        <div className="min-h-screen">
-          <Header currentPage={currentPage} onNavigate={handleNavigate} />
-          <main>
-            {/* O'ZGARTIRILDI: onNavigate prop qo'shildi */}
-            {currentPage === "home" && <HomePage onNavigate={handleNavigate} />}
+        <Router>
+          {" "}
+          {/* Butun ilovani Router bilan o'raymiz */}
+          <div className="min-h-screen">
+            <Header />
+            <main>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/products" element={<ProductsPage />} />
+                <Route path="/product/:id" element={<ProductDetailPage />} />
+                <Route path="/cart" element={<CartPage />} />
+                <Route path="/checkout" element={<CheckoutPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
 
-            {currentPage === "products" && (
-              <ProductsPage onProductClick={handleProductClick} />
-            )}
-
-            {currentPage === "product-detail" && selectedProductId && (
-              <ProductDetailPage
-                productId={selectedProductId}
-                onBack={handleBackToProducts}
-              />
-            )}
-
-            {currentPage === "cart" && <CartPage onNavigate={handleNavigate} />}
-            {currentPage === "checkout" && (
-              <CheckoutPage onNavigate={handleNavigate} />
-            )}
-            {currentPage === "login" && (
-              <LoginPage onNavigate={handleNavigate} />
-            )}
-            {currentPage === "register" && (
-              <RegisterPage onNavigate={handleNavigate} />
-            )}
-            {currentPage === "profile" && (
-              <ProfilePage onNavigate={handleNavigate} />
-            )}
-          </main>
-          <Footer />
-        </div>
+                {/* Agar noto'g'ri manzil yozilsa, uyga qaytaradi */}
+                <Route path="*" element={<Navigate to="/" />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </Router>
       </CartProvider>
     </AuthProvider>
   );

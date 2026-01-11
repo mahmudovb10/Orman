@@ -1,19 +1,19 @@
 // Hero.jsx // Bosh sahifa
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-export function Hero({ onNavigate }) {
+export function Hero() {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const navigate = useNavigate();
 
   const handleExploreProducts = () => {
-    if (onNavigate) {
-      onNavigate("products");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    navigate("/products");
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -22,7 +22,6 @@ export function Hero({ onNavigate }) {
         id="home"
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
       >
-        {/* Background Image */}
         <div
           className="absolute inset-0 z-0"
           style={{
