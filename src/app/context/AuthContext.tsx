@@ -2,120 +2,163 @@ import {
   createContext,
   useContext,
   useState,
-  ReactNode,
   useEffect,
+  ReactNode,
 } from "react";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  updateProfile as firebaseUpdateProfile,
+  signInWithPopup,
+  User as FirebaseUser,
+} from "firebase/auth";
+import { auth, googleProvider } from "../firebase";
 
-interface User {
-  id: number;
+// Foydalanuvchi interfeysi
+interface UserProfile {
+  id: string;
   name: string;
-  email: string;
-  phone?: string;
-  address?: string;
+  email: string | null;
+  photoURL: string | null;
 }
 
+// Context ichidagi funksiyalar va holatlar turi
 interface AuthContextType {
-  user: User | null;
-  login: (email: string, password: string) => boolean;
-  register: (name: string, email: string, password: string) => boolean;
-  logout: () => void;
-  updateProfile: (userData: Partial<User>) => void;
+  user: UserProfile | null;
+  login: (email: string, password: string) => Promise<boolean>;
+  register: (name: string, email: string, password: string) => Promise<boolean>;
+  googleLogin: () => Promise<boolean>;
+  logout: () => Promise<void>;
+  updateProfile: (userData: { name?: string }) => Promise<void>;
   isAuthenticated: boolean;
 }
 
+// Context yaratish (default qiymat undefined)
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<UserProfile | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  // Load user from localStorage on mount
   useEffect(() => {
-    const savedUser = localStorage.getItem("orman_user");
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
-    }
-  }, []);
-
-  const login = (email: string, password: string): boolean => {
-    // Check if user exists in localStorage
-    const users = JSON.parse(localStorage.getItem("orman_users") || "[]");
-    const foundUser = users.find(
-      (u: User & { password: string }) =>
-        u.email === email && u.password === password
+    // onAuthStateChanged avtomatik sessiyani tekshiradi
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (firebaseUser: FirebaseUser | null) => {
+        if (firebaseUser) {
+          setUser({
+            id: firebaseUser.uid,
+            name: firebaseUser.displayName || "Foydalanuvchi",
+            email: firebaseUser.email,
+            photoURL: firebaseUser.photoURL,
+          });
+        } else {
+          setUser(null);
+        }
+        setLoading(false);
+      }
     );
 
-    if (foundUser) {
-      const { password, ...userWithoutPassword } = foundUser;
-      setUser(userWithoutPassword);
-      localStorage.setItem("orman_user", JSON.stringify(userWithoutPassword));
+    return unsubscribe;
+  }, []);
+
+  const login = async (email: string, password: string): Promise<boolean> => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
       return true;
-    }
-    return false;
-  };
-
-  const register = (name: string, email: string, password: string): boolean => {
-    const users = JSON.parse(localStorage.getItem("orman_users") || "[]");
-
-    // Check if user already exists
-    if (users.some((u: User & { password: string }) => u.email === email)) {
+    } catch (error: any) {
+      console.error("Login xatosi:", error.message);
       return false;
     }
-
-    const newUser = {
-      id: Date.now(),
-      name,
-      email,
-      password,
-    };
-
-    users.push(newUser);
-    localStorage.setItem("orman_users", JSON.stringify(users));
-
-    const { password: _, ...userWithoutPassword } = newUser;
-    setUser(userWithoutPassword);
-    localStorage.setItem("orman_user", JSON.stringify(userWithoutPassword));
-    return true;
   };
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem("orman_user");
-  };
-
-  const updateProfile = (userData: Partial<User>) => {
-    if (user) {
-      const updatedUser = { ...user, ...userData };
-      setUser(updatedUser);
-      localStorage.setItem("orman_user", JSON.stringify(updatedUser));
-
-      // Update in users list
-      const users = JSON.parse(localStorage.getItem("orman_users") || "[]");
-      const updatedUsers = users.map((u: User & { password: string }) =>
-        u.id === user.id ? { ...u, ...userData } : u
+  const register = async (
+    name: string,
+    email: string,
+    password: string
+  ): Promise<boolean> => {
+    try {
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
       );
-      localStorage.setItem("orman_users", JSON.stringify(updatedUsers));
+
+      // Ismni Firebase profilida yangilash
+      await firebaseUpdateProfile(result.user, {
+        displayName: name,
+      });
+
+      // State-ni darhol yangilash
+      setUser({
+        id: result.user.uid,
+        name: name,
+        email: result.user.email,
+        photoURL: null,
+      });
+      return true;
+    } catch (error: any) {
+      console.error("Register xatosi:", error.message);
+      return false;
     }
+  };
+
+  const googleLogin = async (): Promise<boolean> => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      return true;
+    } catch (error: any) {
+      console.error("Google login xatosi:", error.message);
+      return false;
+    }
+  };
+
+  const logout = async (): Promise<void> => {
+    try {
+      await signOut(auth);
+      setUser(null);
+    } catch (error: any) {
+      console.error("Chiqish xatosi:", error.message);
+    }
+  };
+
+  const updateProfile = async (userData: { name?: string }): Promise<void> => {
+    if (auth.currentUser) {
+      try {
+        if (userData.name) {
+          await firebaseUpdateProfile(auth.currentUser, {
+            displayName: userData.name,
+          });
+          setUser((prev) => (prev ? { ...prev, name: userData.name! } : null));
+        }
+      } catch (error: any) {
+        console.error("Update xatosi:", error.message);
+      }
+    }
+  };
+
+  const value: AuthContextType = {
+    user,
+    login,
+    register,
+    googleLogin,
+    logout,
+    updateProfile,
+    isAuthenticated: !!user,
   };
 
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-        login,
-        register,
-        logout,
-        updateProfile,
-        isAuthenticated: !!user,
-      }}
-    >
-      {children}
+    <AuthContext.Provider value={value}>
+      {!loading && children}
     </AuthContext.Provider>
   );
 }
 
 export function useAuth() {
   const context = useContext(AuthContext);
-  if (!context) {
+  if (context === undefined) {
     throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
