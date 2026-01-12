@@ -167,7 +167,7 @@ export const products: Product[] = [
     id: 10,
     title: "Elita Gold",
     category: "lyustra",
-    price: 1450000,
+    price: 1300000,
     description: "Uyingizga o'zgacha dizayn berib turuvchi lyustramiz",
     image: "elitagold.jpg",
     features: [
@@ -184,7 +184,7 @@ export const products: Product[] = [
     id: 11,
     title: "Elita Mokriy",
     category: "lyustra",
-    price: 1450000,
+    price: 1300000,
     description: "Uyingizga o'zgacha dizayn berib turuvchi lyustramiz",
     image: "elitabronze.jpg",
     features: [

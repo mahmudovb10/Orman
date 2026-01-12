@@ -2,10 +2,10 @@ import { useState } from "react";
 import { TreePine, LampCeiling, Sofa } from "lucide-react";
 import { products } from "../data/products";
 import { Helmet } from "react-helmet";
-
-export function ProductsPage({ onProductClick }) {
+import { useNavigate } from "react-router-dom";
+export function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
-
+  const navigate = useNavigate();
   const categories = [
     { id: "all", label: "Hamma mahsulotlar", icon: null },
     { id: "lyustra", label: "Lyustra mahsulotlar", icon: LampCeiling },
@@ -62,7 +62,7 @@ export function ProductsPage({ onProductClick }) {
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
-                onClick={() => onProductClick(product.id)}
+                onClick={() => navigate(`/product/${product.id}`)}
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all cursor-pointer group"
               >
                 <div className="relative h-64 overflow-hidden">
@@ -85,7 +85,13 @@ export function ProductsPage({ onProductClick }) {
                   <p className="text-gray-600 line-clamp-2 mb-4">
                     {product.description}
                   </p>
-                  <button className="w-full py-2 bg-amber-900/10 text-amber-900 rounded-lg hover:bg-amber-900 hover:text-white transition-colors">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate(`/product/${product.id}`);
+                    }}
+                    className="w-full py-2 bg-amber-900/10 text-amber-900 rounded-lg hover:bg-amber-900 hover:text-white transition-colors"
+                  >
                     Mahsulotni ko'rish
                   </button>
                 </div>

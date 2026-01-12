@@ -13,6 +13,7 @@ import {
   updateProfile as firebaseUpdateProfile,
   signInWithPopup,
   User as FirebaseUser,
+  User,
 } from "firebase/auth";
 import { auth, googleProvider } from "../firebase";
 
@@ -22,6 +23,8 @@ interface UserProfile {
   name: string;
   email: string | null;
   photoURL: string | null;
+  phone?: string;
+  address?: string;
 }
 
 // Context ichidagi funksiyalar va holatlar turi
@@ -43,23 +46,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // onAuthStateChanged avtomatik sessiyani tekshiradi
-    const unsubscribe = onAuthStateChanged(
-      auth,
-      (firebaseUser: FirebaseUser | null) => {
-        if (firebaseUser) {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        const savedProfile = localStorage.getItem("userProfile");
+
+        if (savedProfile) {
+          setUser(JSON.parse(savedProfile));
+        } else {
           setUser({
             id: firebaseUser.uid,
             name: firebaseUser.displayName || "Foydalanuvchi",
             email: firebaseUser.email,
             photoURL: firebaseUser.photoURL,
           });
-        } else {
-          setUser(null);
         }
-        setLoading(false);
+      } else {
+        setUser(null);
       }
-    );
+      setLoading(false);
+    });
 
     return unsubscribe;
   }, []);
@@ -124,18 +129,41 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const updateProfile = async (userData: { name?: string }): Promise<void> => {
-    if (auth.currentUser) {
-      try {
-        if (userData.name) {
-          await firebaseUpdateProfile(auth.currentUser, {
-            displayName: userData.name,
-          });
-          setUser((prev) => (prev ? { ...prev, name: userData.name! } : null));
-        }
-      } catch (error: any) {
-        console.error("Update xatosi:", error.message);
+  type UpdateProfileData = {
+    name?: string;
+    phone?: string;
+    address?: string;
+  };
+
+  const updateProfile = async (userData: UpdateProfileData): Promise<void> => {
+    if (!auth.currentUser) return;
+
+    try {
+      // 🔥 Firebase faqat name ni saqlaydi
+      if (userData.name) {
+        await firebaseUpdateProfile(auth.currentUser, {
+          displayName: userData.name,
+        });
       }
+
+      await auth.currentUser.reload();
+
+      // 🔥 KENGAYTIRILGAN user obyekt
+      const updatedUser: UserProfile = {
+        id: auth.currentUser.uid,
+        name: auth.currentUser.displayName || "Foydalanuvchi",
+        email: auth.currentUser.email,
+        photoURL: auth.currentUser.photoURL,
+        phone: userData.phone,
+        address: userData.address,
+      };
+
+      setUser(updatedUser);
+
+      // 🔥 localStorage ga yozamiz
+      localStorage.setItem("userProfile", JSON.stringify(updatedUser));
+    } catch (error) {
+      console.error("Profilni yangilashda xatolik:", error);
     }
   };
 
