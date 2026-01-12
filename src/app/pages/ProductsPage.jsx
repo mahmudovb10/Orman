@@ -3,7 +3,7 @@ import { TreePine, LampCeiling, Sofa } from "lucide-react";
 import { products } from "../data/products";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
-export function ProductsPage({ onProductClick }) {
+export function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const navigate = useNavigate();
   const categories = [
