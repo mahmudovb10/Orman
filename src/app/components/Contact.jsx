@@ -32,10 +32,10 @@ export function Contact() {
                   <div>
                     <div className="text-gray-900 mb-1">Telefon</div>
                     <a
-                      href="tel:+998901234567"
+                      href="tel:+998775550022"
                       className="text-gray-600 hover:text-amber-900 transition-colors"
                     >
-                      +998 (90) 123-45-67
+                      +998 (77) 555-00-22
                     </a>
                   </div>
                 </div>
@@ -62,7 +62,7 @@ export function Contact() {
                   <div>
                     <div className="text-gray-900 mb-1">Manzil</div>
                     <p className="text-gray-600">
-                      123 Craftsman Street
+                      Satkak krug
                       <br />
                       Fergana, Uzbekistan
                     </p>

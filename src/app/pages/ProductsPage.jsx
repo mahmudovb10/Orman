@@ -18,6 +18,14 @@ export function ProductsPage() {
       ? products
       : products.filter((p) => p.category === selectedCategory);
 
+  const getImagePath = (path) => {
+    if (!path) return "";
+    // Agar http bilan boshlansa yoki / bilan boshlansa o'zgarishsiz qaytar
+    if (path.startsWith("http") || path.startsWith("/")) return path;
+    // Aks holda oldiga / qo'shib qaytar
+    return `/${path}`;
+  };
+
   return (
     <>
       <Helmet>
