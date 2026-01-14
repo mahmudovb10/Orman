@@ -9,8 +9,9 @@ import {
 } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
-export function CheckoutPage({ onNavigate }) {
+export function CheckoutPage() {
   const { cart, getCartTotal, clearCart } = useCart();
   const { user, isAuthenticated } = useAuth();
   const [fullName, setFullName] = useState(user?.name || "");
@@ -20,6 +21,8 @@ export function CheckoutPage({ onNavigate }) {
 
   const [showWarning, setShowWarning] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
+
+  const navigate = useNavigate();
 
   // --- EMAILJS FUNKSIYASI ---
   const sendEmailOrder = () => {
@@ -73,7 +76,7 @@ export function CheckoutPage({ onNavigate }) {
 
     setTimeout(() => {
       clearCart();
-      onNavigate("home");
+      navigate("/");
     }, 3000);
   };
 
@@ -87,7 +90,7 @@ export function CheckoutPage({ onNavigate }) {
               Tekshirishdan oldin mahsulotlarni savatga qo'shing.
             </p>
             <button
-              onClick={() => onNavigate("products")}
+              onClick={() => navigate("/products")}
               className="px-8 py-3 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors"
             >
               Mahsulotlarni ko'rish
@@ -116,7 +119,7 @@ export function CheckoutPage({ onNavigate }) {
               <p>
                 Jami Buyurtmalar:{" "}
                 <span className="text-amber-900">
-                  {(getCartTotal() * 1.1).toLocaleString()} So'm
+                  {getCartTotal().toLocaleString()} So'm
                 </span>
               </p>
               <p>
@@ -134,7 +137,7 @@ export function CheckoutPage({ onNavigate }) {
     <div className="min-h-screen pt-24 pb-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <button
-          onClick={() => onNavigate("cart")}
+          onClick={() => navigate("/cart")}
           className="flex items-center gap-2 text-gray-700 hover:text-amber-900 transition-colors mb-8"
         >
           <ArrowLeft size={20} />
@@ -156,13 +159,13 @@ export function CheckoutPage({ onNavigate }) {
               </p>
               <div className="space-y-3">
                 <button
-                  onClick={() => onNavigate("register")}
+                  onClick={() => navigate("/register")}
                   className="w-full py-3 bg-amber-900 text-white rounded-lg hover:bg-amber-800 transition-colors"
                 >
                   Hisob yaratish
                 </button>
                 <button
-                  onClick={() => onNavigate("login")}
+                  onClick={() => navigate("/login")}
                   className="w-full py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors"
                 >
                   Kirish

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Mail, Lock, User, ArrowRight } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
@@ -10,18 +10,33 @@ export function RegisterPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { register, googleLogin } = useAuth();
+  const { register, googleLogin, user } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (password.length < 6) {
+      setError("Parol kamida 6 ta belgidan iborat bo'lishi kerak");
+      return;
+    }
     try {
       setError("");
       setLoading(true);
-      await register(email, password, name);
-      navigate("/");
+      // TO'G'RI TARTIB: name, email, password
+      const success = await register(name, email, password);
+      if (success) {
+        navigate("/");
+      } else {
+        setError("Ro'yxatdan o'tishda xatolik yuz berdi");
+      }
     } catch (err) {
-      setError("Ro'yxatdan o'tishda xatolik: " + err.message);
+      setError(err.message);
     } finally {
       setLoading(false);
     }
@@ -30,12 +45,10 @@ export function RegisterPage() {
   const handleGoogleSignUp = async () => {
     try {
       setError("");
-      const success = await googleLogin();
-      if (success) {
-        navigate("/");
-      }
+      // Shunchaki funksiyani chaqiramiz, u o'zi yo'naltiradi
+      await googleLogin();
+      // Kompyuterda bo'lsa onAuthStateChanged o'zi navigate qiladi yoki bu yerda navigate("/") qolsa ham bo'ladi
     } catch (err) {
-      console.error(err);
       setError("Google orqali kirishda muammo yuz berdi.");
     }
   };
