@@ -7,11 +7,12 @@ import { useNavigate } from "react-router-dom";
 export function CartPage({ onNavigate }) {
   const { cart, removeFromCart, updateQuantity, getCartTotal, clearCart } =
     useCart();
+
   const navigate = useNavigate();
 
   if (cart.length === 0) {
     return (
-      <div className="min-h-screen pt-24 pb-20 bg-gray-50">
+      <div className="min-h-screen pt-24 pb-20 w-full bg-gray-50 ">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center py-20">
             <div className="w-24 h-24 bg-amber-900/10 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -42,7 +43,7 @@ export function CartPage({ onNavigate }) {
         {/* Back Button */}
 
         <button
-          onClick={() => onNavigate("products")}
+          onClick={() => navigate("/products")}
           className="flex items-center gap-2 text-gray-700 hover:text-amber-900 transition-colors mb-8"
         >
           <ArrowLeft size={20} />
@@ -60,7 +61,7 @@ export function CartPage({ onNavigate }) {
                 onClick={clearCart}
                 className="text-gray-600 hover:text-red-600 transition-colors"
               >
-                Hammasini tozalash
+                Tozalash
               </button>
             </div>
 
@@ -132,13 +133,13 @@ export function CartPage({ onNavigate }) {
 
                       {/* Price */}
 
-                      <div className="text-right">
-                        <div className="text-amber-900">
+                      <div className="text-right ">
+                        <div className="text-amber-900 flex-row">
                           {(item.price * item.quantity).toLocaleString()} So'm
                         </div>
 
-                        <div className="text-gray-500">
-                          {item.price.toLocaleString()} So'm har biri
+                        <div className="text-gray-500 ">
+                          {item.price.toLocaleString()} Har biri
                         </div>
                       </div>
                     </div>
