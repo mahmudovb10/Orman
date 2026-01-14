@@ -42,18 +42,20 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const storageKey =
     isAuthenticated && user ? `cart_${user.id || user.email}` : "cart_guest";
 
-  const [cart, setCart] = useState<CartItem[]>([]);
-
-  // 🔹 LocalStorage'dan cartni yuklash (user o'zgarsa ham)
-  useEffect(() => {
+  // 1. useState ichida darhol localStorage dan o'qish (JSX varianti)
+  const [cart, setCart] = useState(() => {
+    const storageKey =
+      isAuthenticated && user ? `cart_${user.id || user.email}` : "cart_guest";
     const savedCart = localStorage.getItem(storageKey);
-    setCart(savedCart ? JSON.parse(savedCart) : []);
-  }, [storageKey]);
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
 
-  // 🔹 Cart o'zgarsa localStorage'ga yozish
+  // 2. Faqat savatni saqlash uchun useEffect (Yuklash uchun useEffect shart emas)
   useEffect(() => {
+    const storageKey =
+      isAuthenticated && user ? `cart_${user.id || user.email}` : "cart_guest";
     localStorage.setItem(storageKey, JSON.stringify(cart));
-  }, [cart, storageKey]);
+  }, [cart, user, isAuthenticated]);
 
   const addToCart = (product: Product) => {
     setCart((prevCart) => {
