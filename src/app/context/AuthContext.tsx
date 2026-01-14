@@ -12,12 +12,12 @@ import {
   onAuthStateChanged,
   updateProfile as firebaseUpdateProfile,
   signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   User as FirebaseUser,
-  User,
 } from "firebase/auth";
 import { auth, googleProvider } from "../firebase";
 
-// Foydalanuvchi interfeysi
 interface UserProfile {
   id: string;
   name: string;
@@ -27,18 +27,20 @@ interface UserProfile {
   address?: string;
 }
 
-// Context ichidagi funksiyalar va holatlar turi
 interface AuthContextType {
   user: UserProfile | null;
   login: (email: string, password: string) => Promise<boolean>;
   register: (name: string, email: string, password: string) => Promise<boolean>;
   googleLogin: () => Promise<boolean>;
   logout: () => Promise<void>;
-  updateProfile: (userData: { name?: string }) => Promise<void>;
+  updateProfile: (userData: {
+    name?: string;
+    phone?: string;
+    address?: string;
+  }) => Promise<void>;
   isAuthenticated: boolean;
 }
 
-// Context yaratish (default qiymat undefined)
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -46,10 +48,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Mobil qurilmalarda redirect natijasini ushlab olish
+    getRedirectResult(auth).catch((error) => {
+      console.error("Redirect login xatosi:", error.message);
+    });
+
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
         const savedProfile = localStorage.getItem("userProfile");
-
         if (savedProfile) {
           setUser(JSON.parse(savedProfile));
         } else {
@@ -62,6 +68,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
       } else {
         setUser(null);
+        localStorage.removeItem("userProfile");
       }
       setLoading(false);
     });
@@ -90,13 +97,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         email,
         password
       );
-
-      // Ismni Firebase profilida yangilash
-      await firebaseUpdateProfile(result.user, {
-        displayName: name,
-      });
-
-      // State-ni darhol yangilash
+      await firebaseUpdateProfile(result.user, { displayName: name });
       setUser({
         id: result.user.uid,
         name: name,
@@ -112,7 +113,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const googleLogin = async (): Promise<boolean> => {
     try {
-      await signInWithPopup(auth, googleProvider);
+      // Mobil qurilmani aniqlash
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        // Telefonda redirect usuli (pop-up bloklanishini oldini oladi)
+        await signInWithRedirect(auth, googleProvider);
+      } else {
+        // Kompyuterda pop-up usuli
+        await signInWithPopup(auth, googleProvider);
+      }
       return true;
     } catch (error: any) {
       console.error("Google login xatosi:", error.message);
@@ -124,31 +134,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       await signOut(auth);
       setUser(null);
+      localStorage.removeItem("userProfile");
     } catch (error: any) {
       console.error("Chiqish xatosi:", error.message);
     }
   };
 
-  type UpdateProfileData = {
+  const updateProfile = async (userData: {
     name?: string;
     phone?: string;
     address?: string;
-  };
-
-  const updateProfile = async (userData: UpdateProfileData): Promise<void> => {
+  }): Promise<void> => {
     if (!auth.currentUser) return;
-
     try {
-      // 🔥 Firebase faqat name ni saqlaydi
       if (userData.name) {
         await firebaseUpdateProfile(auth.currentUser, {
           displayName: userData.name,
         });
       }
-
       await auth.currentUser.reload();
-
-      // 🔥 KENGAYTIRILGAN user obyekt
       const updatedUser: UserProfile = {
         id: auth.currentUser.uid,
         name: auth.currentUser.displayName || "Foydalanuvchi",
@@ -157,10 +161,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         phone: userData.phone,
         address: userData.address,
       };
-
       setUser(updatedUser);
-
-      // 🔥 localStorage ga yozamiz
       localStorage.setItem("userProfile", JSON.stringify(updatedUser));
     } catch (error) {
       console.error("Profilni yangilashda xatolik:", error);
