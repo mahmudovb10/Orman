@@ -75,7 +75,7 @@ export function About() {
               <img
                 src="/logo.jpg"
                 alt="Craftsmanship"
-                className="w-full h-[600px] object-cover"
+                className="w-full h-auto object-cover"
               />
             </div>
 

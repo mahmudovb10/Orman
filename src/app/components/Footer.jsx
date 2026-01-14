@@ -26,13 +26,13 @@ export function Footer() {
             </p>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://t.me/orman_uz"
                 className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors"
               >
                 <Send size={18} />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/orman_uz/?utm_source=ig_web_button_share_sheet"
                 className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors"
               >
                 <Instagram size={18} />
