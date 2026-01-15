@@ -3,7 +3,7 @@ import { TreePine, LampCeiling, Sofa } from "lucide-react";
 import { products } from "../data/products";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
-export function ProductsPage() {
+function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const navigate = useNavigate();
   const categories = [
@@ -110,7 +110,7 @@ export function ProductsPage() {
           {filteredProducts.length === 0 && (
             <div className="text-center py-20">
               <p className="text-gray-500">
-                Hozircha bu kategoriyadagi mahsulotlar mavjud emas :(
+                Hozircha bu kategoriyadagi mahsulotlar hozircha qo'shilmagan :(
               </p>
             </div>
           )}
@@ -119,3 +119,5 @@ export function ProductsPage() {
     </>
   );
 }
+
+export default ProductsPage;

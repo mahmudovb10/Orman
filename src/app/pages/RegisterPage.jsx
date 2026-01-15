@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Mail, Lock, User, ArrowRight } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 
-export function RegisterPage() {
+function RegisterPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -163,3 +163,5 @@ export function RegisterPage() {
     </div>
   );
 }
+
+export default RegisterPage;
