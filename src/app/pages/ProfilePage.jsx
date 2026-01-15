@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { User, Mail, Phone, MapPin, Save, LogOut, X } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 
-export function ProfilePage() {
+function ProfilePage() {
   const { user, updateProfile, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -224,3 +224,5 @@ export function ProfilePage() {
     </div>
   );
 }
+
+export default ProfilePage;

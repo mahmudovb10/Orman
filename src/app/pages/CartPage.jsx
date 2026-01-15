@@ -2,7 +2,7 @@ import { Trash2, Plus, Minus, ShoppingBag, ArrowLeft } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 
-export function CartPage() {
+function CartPage() {
   const { cart, removeFromCart, updateQuantity, getCartTotal, clearCart } =
     useCart();
   const navigate = useNavigate();
@@ -173,3 +173,5 @@ export function CartPage() {
     </div>
   );
 }
+
+export default CartPage;

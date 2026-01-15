@@ -3,7 +3,7 @@ import { About } from "../components/About";
 import { Gallery } from "../components/Gallery";
 import { Contact } from "../components/Contact";
 import { Helmet } from "react-helmet";
-export function HomePage({ onNavigate }) {
+function HomePage({ onNavigate }) {
   return (
     <>
       <Helmet>
@@ -17,3 +17,5 @@ export function HomePage({ onNavigate }) {
     </>
   );
 }
+
+export default HomePage;

@@ -4,7 +4,7 @@ import { ArrowLeft, ShoppingCart, Check } from "lucide-react";
 import { products } from "../data/products";
 import { useCart } from "../context/CartContext";
 
-export function ProductDetailPage() {
+function ProductDetailPage() {
   const { id } = useParams();
   const productId = parseInt(id, 10); // string -> number
   const product = products.find((p) => p.id === productId);
@@ -166,3 +166,5 @@ export function ProductDetailPage() {
     </div>
   );
 }
+
+export default ProductDetailPage;
