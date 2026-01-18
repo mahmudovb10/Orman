@@ -1,5 +1,5 @@
 import { useState } from "react";
-import emailjs from "@emailjs/browser"; // EmailJS ulandi
+import emailjs from "@emailjs/browser";
 import {
   CreditCard,
   Truck,
@@ -26,8 +26,10 @@ function CheckoutPage() {
 
   // --- EMAILJS FUNKSIYASI ---
   const sendEmailOrder = () => {
+    // Buyurtma ma'lumotlarini tayyorlash
     const ordersArray = cart.map((item) => ({
-      name: item.title,
+      // Ismiga rangini ham qo'shib qo'yamiz, shunda emailga to'liq boradi
+      name: `${item.title} (Rangi: ${item.selectedColor || "Standart"})`,
       units: item.quantity,
       price: (item.price * item.quantity).toLocaleString(),
       image_url: item.image, // PUBLIC URL bo‘lishi shart
@@ -55,7 +57,7 @@ function CheckoutPage() {
       "service_1uq66yb",
       "template_uewwyfv",
       templateParams,
-      "nIdfdldPYcfb5buo5"
+      "nIdfdldPYcfb5buo5",
     );
   };
 
@@ -205,20 +207,6 @@ function CheckoutPage() {
                   />
                 </div>
 
-                {/* <div>
-                  <label className="block text-gray-700 mb-2">
-                    Email Manzil
-                  </label>
-                  <input
-                    type="email"
-                    value={emailAddress}
-                    onChange={(e) => setEmailAddres(e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-900 focus:border-transparent bg-gray-50"
-                    placeholder="your@email.com"
-                    required
-                  />
-                </div> */}
-
                 <div>
                   <label className="block text-gray-700 mb-2">
                     Telefon Raqam
@@ -297,6 +285,12 @@ function CheckoutPage() {
                     />
                     <div className="flex-1">
                       <h4 className="text-gray-900 mb-1">{item.title}</h4>
+                      {/* Savat xulosasida ham rangni ko'rsatib turish */}
+                      {item.selectedColor && (
+                        <p className="text-gray-500 text-xs mb-1">
+                          Rang: {item.selectedColor}
+                        </p>
+                      )}
                       <p className="text-gray-600">Soni: {item.quantity}</p>
                     </div>
                     <div className="text-amber-900">
@@ -315,13 +309,9 @@ function CheckoutPage() {
                   <span>Yetkazib berish</span>
                   <span className="text-green-600">Free</span>
                 </div>
-                <div className="flex justify-between text-gray-600">
-                  {/* <span>Tax</span>
-                  <span>${(getCartTotal() * 0.1).toLocaleString()}</span> */}
-                </div>
                 <div className="flex justify-between text-gray-900 pt-3 border-t border-gray-200">
                   <span>Hammasi</span>
-                  <span>{(getCartTotal() * 1.1).toLocaleString()} So'm</span>
+                  <span>{getCartTotal().toLocaleString()} So'm</span>
                 </div>
               </div>
 
