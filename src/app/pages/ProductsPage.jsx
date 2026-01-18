@@ -77,6 +77,7 @@ function ProductsPage() {
                   <img
                     src={product.image}
                     alt={product.title}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-4 right-4 bg-amber-900 text-white px-3 py-1 rounded-full">
