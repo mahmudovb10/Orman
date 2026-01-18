@@ -126,12 +126,12 @@ function ProductDetailPage() {
             </div>
 
             {/* Rang nomini rasm pasida ko'rsatish */}
-            <div className="mt-4 text-center">
+            {/* <div className="mt-4 text-center">
               <p className="text-gray-600">
                 Color:{" "}
                 <span className="font-bold text-amber-900">{currentColor}</span>
               </p>
-            </div>
+            </div> */}
           </div>
 
           <div className="flex flex-col">
@@ -148,7 +148,7 @@ function ProductDetailPage() {
 
             {/* Features */}
             <div className="mb-8">
-              <h3 className="mb-4 text-gray-900">Features</h3>
+              <h3 className="mb-4 text-gray-900">Spetsifikatsiya</h3>
               <div className="grid sm:grid-cols-2 gap-3">
                 {product.features.map((feature, index) => (
                   <div
@@ -166,7 +166,7 @@ function ProductDetailPage() {
 
             {/* Specifications */}
             <div className="mb-8 p-6 bg-gray-50 rounded-lg">
-              <h3 className="mb-4 text-gray-900">Specifications</h3>
+              <h3 className="mb-4 text-gray-900">Xususiyatlari</h3>
               <div className="space-y-3">
                 {product.material && (
                   <div className="flex justify-between">
@@ -176,13 +176,13 @@ function ProductDetailPage() {
                 )}
                 {product.dimensions && (
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Dimensions:</span>
+                    <span className="text-gray-600">O'lchami:</span>
                     <span className="text-gray-900">{product.dimensions}</span>
                   </div>
                 )}
                 {/* Bu yerda ham tanlangan rang chiqadi */}
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Color:</span>
+                  <span className="text-gray-600">Rangi:</span>
                   <span className="text-gray-900 font-medium">
                     {currentColor}
                   </span>
