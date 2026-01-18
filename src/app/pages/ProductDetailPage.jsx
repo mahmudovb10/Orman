@@ -1,17 +1,26 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, ShoppingCart, Check } from "lucide-react";
+import {
+  ArrowLeft,
+  ShoppingCart,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { products } from "../data/products";
 import { useCart } from "../context/CartContext";
 
 function ProductDetailPage() {
   const { id } = useParams();
-  const productId = parseInt(id, 10); // string -> number
+  const productId = parseInt(id, 10);
   const product = products.find((p) => p.id === productId);
 
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const [showSuccess, setShowSuccess] = useState(false);
+
+  // Ranglar indeksi (0 - birinchi rang)
+  const [currentVariantIndex, setCurrentVariantIndex] = useState(0);
 
   if (!product) {
     return (
@@ -29,8 +38,49 @@ function ProductDetailPage() {
     );
   }
 
+  // Variantlar bormi tekshiramiz
+  const hasVariants = product.variants && product.variants.length > 0;
+
+  // Hozirgi tanlangan rasm va rang
+  const currentImage = hasVariants
+    ? product.variants[currentVariantIndex].image
+    : product.image;
+
+  const currentColor = hasVariants
+    ? product.variants[currentVariantIndex].color
+    : product.color || "Standart";
+
+  // Keyingi rangga o'tish
+  const handleNext = (e) => {
+    e.stopPropagation();
+    if (!hasVariants) return;
+    setCurrentVariantIndex((prev) =>
+      prev === product.variants.length - 1 ? 0 : prev + 1,
+    );
+  };
+
+  // Oldingi rangga o'tish
+  const handlePrev = (e) => {
+    e.stopPropagation();
+    if (!hasVariants) return;
+    setCurrentVariantIndex((prev) =>
+      prev === 0 ? product.variants.length - 1 : prev - 1,
+    );
+  };
+
   const handleAddToCart = () => {
-    addToCart(product);
+    // Savatga maxsus obyekt qo'shamiz
+    const itemToAdd = {
+      ...product,
+      // ID ni o'zgartiramiz, shunda har xil ranglar alohida mahsulot bo'lib tushadi
+      id: `${product.id}-${currentColor}`,
+      originalId: product.id,
+      image: currentImage, // Tanlangan rasm
+      selectedColor: currentColor, // Tanlangan rang nomi
+      title: `${product.title} (${currentColor})`, // Nomiga rangni qo'shib qo'yamiz
+    };
+
+    addToCart(itemToAdd);
     setShowSuccess(true);
     setTimeout(() => setShowSuccess(false), 2000);
   };
@@ -46,15 +96,42 @@ function ProductDetailPage() {
         </button>
 
         <div className="grid lg:grid-cols-2 gap-12 bg-white rounded-2xl p-8 shadow-lg">
+          {/* Rasm qismi o'zgartirildi: Strelkalar qo'shildi */}
           <div className="relative">
-            <div className="aspect-square rounded-xl overflow-hidden">
+            <div className="aspect-square rounded-xl overflow-hidden relative group">
               <img
-                src={product.image}
+                src={currentImage}
                 alt={product.title}
                 loading="lazy"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-all duration-300"
               />
+
+              {/* Agar variantlar bo'lsa strelkalar chiqadi */}
+              {hasVariants && (
+                <>
+                  <button
+                    onClick={handlePrev}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full hover:bg-white shadow-md z-10 text-amber-900 hover:scale-110 transition-all"
+                  >
+                    <ChevronLeft size={24} />
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full hover:bg-white shadow-md z-10 text-amber-900 hover:scale-110 transition-all"
+                  >
+                    <ChevronRight size={24} />
+                  </button>
+                </>
+              )}
             </div>
+
+            {/* Rang nomini rasm pasida ko'rsatish */}
+            {/* <div className="mt-4 text-center">
+              <p className="text-gray-600">
+                Color:{" "}
+                <span className="font-bold text-amber-900">{currentColor}</span>
+              </p>
+            </div> */}
           </div>
 
           <div className="flex flex-col">
@@ -71,7 +148,7 @@ function ProductDetailPage() {
 
             {/* Features */}
             <div className="mb-8">
-              <h3 className="mb-4 text-gray-900">Features</h3>
+              <h3 className="mb-4 text-gray-900">Spetsifikatsiya</h3>
               <div className="grid sm:grid-cols-2 gap-3">
                 {product.features.map((feature, index) => (
                   <div
@@ -89,7 +166,7 @@ function ProductDetailPage() {
 
             {/* Specifications */}
             <div className="mb-8 p-6 bg-gray-50 rounded-lg">
-              <h3 className="mb-4 text-gray-900">Specifications</h3>
+              <h3 className="mb-4 text-gray-900">Xususiyatlari</h3>
               <div className="space-y-3">
                 {product.material && (
                   <div className="flex justify-between">
@@ -99,16 +176,17 @@ function ProductDetailPage() {
                 )}
                 {product.dimensions && (
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Dimensions:</span>
+                    <span className="text-gray-600">O'lchami:</span>
                     <span className="text-gray-900">{product.dimensions}</span>
                   </div>
                 )}
-                {product.color && (
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">Color:</span>
-                    <span className="text-gray-900">{product.color}</span>
-                  </div>
-                )}
+                {/* Bu yerda ham tanlangan rang chiqadi */}
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Rangi:</span>
+                  <span className="text-gray-900 font-medium">
+                    {currentColor}
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -134,7 +212,7 @@ function ProductDetailPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {products
               .filter(
-                (p) => p.category === product.category && p.id !== product.id
+                (p) => p.category === product.category && p.id !== product.id,
               )
               .slice(0, 4)
               .map((relatedProduct) => (

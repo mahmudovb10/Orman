@@ -8,16 +8,18 @@ import {
 import { useAuth } from "./AuthContext";
 
 export interface Product {
-  id: number;
+  id: number | string;
   title: string;
   category: string;
   price: number;
   description: string;
   image: string;
+  variants?: { color: string; image: string }[];
   features: string[];
   material?: string;
   dimensions?: string;
   color?: string;
+  selectedColor?: string;
 }
 
 export interface CartItem extends Product {
@@ -65,7 +67,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         return prevCart.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
-            : item
+            : item,
         );
       }
 
@@ -85,8 +87,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
     setCart((prevCart) =>
       prevCart.map((item) =>
-        item.id === productId ? { ...item, quantity } : item
-      )
+        item.id === productId ? { ...item, quantity } : item,
+      ),
     );
   };
 

@@ -73,6 +73,15 @@ function CartPage() {
                           {item.category}
                         </div>
                         <h3 className="text-gray-900">{item.title}</h3>
+                        {/* YANGI: Savatda rangni ko'rsatish */}
+                        {item.selectedColor && (
+                          <p className="text-gray-500 text-sm mt-1">
+                            Color:{" "}
+                            <span className="font-medium text-gray-700">
+                              {item.selectedColor}
+                            </span>
+                          </p>
+                        )}
                       </div>
                       <button
                         onClick={() => removeFromCart(item.id)}
