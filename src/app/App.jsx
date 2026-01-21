@@ -1,4 +1,5 @@
-import { lazy, Suspense } from "react"; // Qo'shildi
+import ScrollToTop from "./components/ScrollToTop";
+import { lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -25,7 +26,7 @@ export default function App() {
     <AuthProvider>
       <CartProvider>
         <Router>
-          {" "}
+          <ScrollToTop />{" "}
           <div className="min-h-screen">
             <Header />
             <main>

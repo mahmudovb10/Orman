@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
@@ -14,12 +14,12 @@ function ProductDetailPage() {
   const { id } = useParams();
   const productId = parseInt(id, 10);
   const product = products.find((p) => p.id === productId);
+  const [isChanging, setIsChanging] = useState(false);
 
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const [showSuccess, setShowSuccess] = useState(false);
 
-  // Ranglar indeksi (0 - birinchi rang)
   const [currentVariantIndex, setCurrentVariantIndex] = useState(0);
 
   if (!product) {
@@ -51,22 +51,29 @@ function ProductDetailPage() {
     : product.color || "Standart";
 
   // Keyingi rangga o'tish
-  const handleNext = (e) => {
-    e.stopPropagation();
-    if (!hasVariants) return;
-    setCurrentVariantIndex((prev) =>
-      prev === product.variants.length - 1 ? 0 : prev + 1,
-    );
-  };
+  // const handleNext = (e) => {
+  //   e.stopPropagation();
+  //   if (!hasVariants) return;
+  //   setCurrentVariantIndex((prev) =>
+  //     prev === product.variants.length - 1 ? 0 : prev + 1,
+  //   );
+  // };
 
-  // Oldingi rangga o'tish
-  const handlePrev = (e) => {
-    e.stopPropagation();
-    if (!hasVariants) return;
-    setCurrentVariantIndex((prev) =>
-      prev === 0 ? product.variants.length - 1 : prev - 1,
-    );
-  };
+  useEffect(() => {
+    if (!currentImage) return;
+
+    const img = new Image();
+    img.src = currentImage;
+  }, [currentImage]);
+
+  // // Oldingi rangga o'tish
+  // const handlePrev = (e) => {
+  //   e.stopPropagation();
+  //   if (!hasVariants) return;
+  //   setCurrentVariantIndex((prev) =>
+  //     prev === 0 ? product.variants.length - 1 : prev - 1,
+  //   );
+  // };
 
   const handleAddToCart = () => {
     // Savatga maxsus obyekt qo'shamiz
@@ -85,6 +92,33 @@ function ProductDetailPage() {
     setTimeout(() => setShowSuccess(false), 2000);
   };
 
+  const changeVariant = (direction) => {
+    if (!hasVariants || isChanging) return;
+
+    setIsChanging(true);
+
+    setCurrentVariantIndex((prev) => {
+      if (direction === "next") {
+        return prev === product.variants.length - 1 ? 0 : prev + 1;
+      } else {
+        return prev === 0 ? product.variants.length - 1 : prev - 1;
+      }
+    });
+
+    setTimeout(() => {
+      setIsChanging(false);
+    }, 250); // 📱 mobil uchun ideal
+  };
+
+  useEffect(() => {
+    if (!hasVariants) return;
+
+    product.variants.slice(0, 3).forEach((variant) => {
+      const img = new Image();
+      img.src = variant.image;
+    });
+  }, [product.id]);
+
   return (
     <div className="min-h-screen pt-24 pb-20 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -102,7 +136,9 @@ function ProductDetailPage() {
               <img
                 src={currentImage}
                 alt={product.title}
-                loading="lazy"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
                 className="w-full h-full object-cover transition-all duration-300"
               />
 
@@ -110,13 +146,19 @@ function ProductDetailPage() {
               {hasVariants && (
                 <>
                   <button
-                    onClick={handlePrev}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      changeVariant("prev");
+                    }}
                     className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full hover:bg-white shadow-md z-10 text-amber-900 hover:scale-110 transition-all"
                   >
                     <ChevronLeft size={24} />
                   </button>
                   <button
-                    onClick={handleNext}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      changeVariant("next");
+                    }}
                     className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full hover:bg-white shadow-md z-10 text-amber-900 hover:scale-110 transition-all"
                   >
                     <ChevronRight size={24} />
@@ -176,7 +218,7 @@ function ProductDetailPage() {
                 )}
                 {product.dimensions && (
                   <div className="flex justify-between">
-                    <span className="text-gray-600">O'lchami:</span>
+                    <span className="text-gray-600">Ditsimetr:</span>
                     <span className="text-gray-900">{product.dimensions}</span>
                   </div>
                 )}
