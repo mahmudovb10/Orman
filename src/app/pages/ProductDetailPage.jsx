@@ -123,7 +123,7 @@ function ProductDetailPage() {
     <div className="min-h-screen pt-24 pb-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <button
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/products")}
           className="flex items-center gap-2 text-gray-700 hover:text-amber-900 transition-colors mb-8"
         >
           <ArrowLeft size={20} /> Mahsulotlarga qaytish
