@@ -14,8 +14,8 @@ export const products: Product[] = [
       "Har bir detaliga etibor bilan qaralgan",
       "Qo'l mehnati",
     ],
-    material: "Premium Oak",
-    dimensions: "200cm x 100cm x 75cm",
+    material: "MDF, Faton, Led, Diot",
+    dimensions: "2m",
     color: "Qora va tilla ranglar",
   },
   {
@@ -49,7 +49,7 @@ export const products: Product[] = [
       "Qo'l mehnati",
     ],
     material: "Mahogany",
-    dimensions: "Bo'y 2m, Eni 1.2m",
+    dimensions: "1.20m",
     color: "Oq va tilla ranglari",
   },
   {
@@ -66,7 +66,7 @@ export const products: Product[] = [
       "Qo'l mehnati",
     ],
     material: "Faton, MDF, Led",
-    dimensions: "1.35 m",
+    dimensions: "1.35m",
     color: "Oq va tilla ranglari",
   },
   {
@@ -185,7 +185,7 @@ export const products: Product[] = [
       "Qo'l mehnati",
     ],
     material: "Faton, MDF, Led",
-    dimensions: "1.80 m",
+    dimensions: "1.80m",
     color: "Tilla va oq rang",
   },
 
@@ -220,7 +220,7 @@ export const products: Product[] = [
       "Qo'l mehnati",
     ],
     material: "Faton, MDF, Diot, Led",
-    dimensions: ".80m",
+    dimensions: "80m",
     color: "Tilla va oq uyg'unlashtirilgan",
   },
   {
@@ -254,7 +254,7 @@ export const products: Product[] = [
       "Qo'l mehnati",
     ],
     material: "Faton, MDF, Led",
-    dimensions: "1.30m, Eni:60 sm",
+    dimensions: "1.30m ",
     color: "Tilla va oq uyg'unlashtirilgan",
   },
   {
@@ -271,7 +271,7 @@ export const products: Product[] = [
       "Qo'l mehnati",
     ],
     material: "Faton, MDF, Led",
-    dimensions: "1.30mx x 60 sm",
+    dimensions: "1.30m",
     color: "Tilla va oq uyg'unlashtirilgan",
   },
   {
@@ -293,7 +293,7 @@ export const products: Product[] = [
       "Qo'l mehnati",
     ],
     material: "Faton, MDF, Led",
-    dimensions: "1.30m x 60 sm",
+    dimensions: "1.30m",
     color: "Tilla va oq uyg'unlashtirilgan",
   },
   {
@@ -317,7 +317,7 @@ export const products: Product[] = [
       "Qo'l mehnati",
     ],
     material: "Faton, MDF, Led",
-    dimensions: "45 x 45",
+    dimensions: "45sm",
     color: "Tilla va oq uyg'unlashtirilgan",
   },
   {
@@ -344,7 +344,7 @@ export const products: Product[] = [
       "Qo'l mehnati",
     ],
     material: "Faton, MDF, Led",
-    dimensions: "60 x 60",
+    dimensions: "60sm",
     color: "Tilla va qora uyg'unlashtirilgan",
   },
   {
@@ -374,7 +374,7 @@ export const products: Product[] = [
       "Qo'l mehnati",
     ],
     material: "Faton, MDF, Led",
-    dimensions: "45 x 45",
+    dimensions: "45sm",
     color: "Tilla va jigarrang ranglari uyg'unlashtirilgan",
   },
   {
@@ -402,7 +402,7 @@ export const products: Product[] = [
       "Qo'l mehnati",
     ],
     material: "Faton, MDF, Led",
-    dimensions: "45 x 45",
+    dimensions: "45sm",
     color: "Tilla va jigarrang ranglari uyg'unlashtirilgan",
   },
 ];
