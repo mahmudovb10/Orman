@@ -15,7 +15,7 @@ export const products: Product[] = [
       "Qo'l mehnati",
     ],
     material: "MDF, Faton, Led, Diot",
-    dimensions: "2m",
+    dimensions: "1.80m",
     color: "Qora va tilla ranglar",
   },
   {
