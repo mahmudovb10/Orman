@@ -14,7 +14,14 @@ export interface Product {
   price: number;
   description: string;
   image: string;
-  variants?: { color: string; image: string }[];
+
+  variants?: {
+    color: string;
+    image: string;
+    size?: number | string;
+    price?: number | string;
+    bio?: number | string;
+  }[];
   features: string[];
   material?: string;
   dimensions?: string;
