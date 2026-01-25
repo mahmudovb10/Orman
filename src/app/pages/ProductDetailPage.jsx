@@ -54,6 +54,10 @@ function ProductDetailPage() {
     ? product.variants[currentVariantIndex].size
     : product.size || "Standart";
 
+  const currentPrice = hasVariants
+    ? product.variants[currentVariantIndex].price
+    : product.price;
+
   // Keyingi rangga o'tish
   // const handleNext = (e) => {
   //   e.stopPropagation();
@@ -188,7 +192,7 @@ function ProductDetailPage() {
             <h1 className="mb-4 text-amber-900">{product.title}</h1>
             <div className="mb-6">
               <div className="text-amber-900">
-                {product.price.toLocaleString()} $
+                {currentPrice.toLocaleString()} $
               </div>
             </div>
             <p className="text-gray-600 mb-8">{product.description}</p>

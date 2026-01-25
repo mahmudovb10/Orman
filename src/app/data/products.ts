@@ -60,7 +60,7 @@ export const products: Product[] = [
       {
         color: "Oq va tilla ranglari",
         image: "/koinot.avif",
-        size: 1.35,
+        size: "1.35",
         price: 84,
       },
       {
