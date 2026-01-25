@@ -142,7 +142,7 @@ function CartPage() {
               <div className="space-y-4 mb-6">
                 <div className="flex justify-between text-gray-600">
                   <span>Barchasi</span>
-                  <span>{getCartTotal().toLocaleString()} So'm</span>
+                  <span>{getCartTotal().toLocaleString()} $</span>
                 </div>
                 <div className="flex justify-between text-gray-600">
                   <span>Yetkazib berish</span>
@@ -151,7 +151,7 @@ function CartPage() {
                 <div className="border-t border-gray-200 pt-4">
                   <div className="flex justify-between text-gray-900 text-lg">
                     <span>Hammasi</span>
-                    <span>{getCartTotal().toLocaleString()} So'm</span>
+                    <span>{getCartTotal().toLocaleString()} $</span>
                   </div>
                 </div>
               </div>
