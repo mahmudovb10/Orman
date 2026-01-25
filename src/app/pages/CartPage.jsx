@@ -122,10 +122,10 @@ function CartPage() {
 
                       <div className="text-right">
                         <div className="text-amber-900">
-                          {(item.price * item.quantity).toLocaleString()} So'm
+                          {(item.price * item.quantity).toLocaleString()} $
                         </div>
                         <div className="text-gray-500 text-sm">
-                          {item.price.toLocaleString()} So'm har biri
+                          {item.price.toLocaleString()} $ har biri
                         </div>
                       </div>
                     </div>

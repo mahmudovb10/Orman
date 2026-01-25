@@ -121,7 +121,7 @@ function CheckoutPage() {
               <p>
                 Jami Buyurtmalar:{" "}
                 <span className="text-amber-900">
-                  {getCartTotal().toLocaleString()} So'm
+                  {getCartTotal().toLocaleString()} $
                 </span>
               </p>
               <p>
@@ -294,7 +294,7 @@ function CheckoutPage() {
                       <p className="text-gray-600">Soni: {item.quantity}</p>
                     </div>
                     <div className="text-amber-900">
-                      {(item.price * item.quantity).toLocaleString()} So'm
+                      {(item.price * item.quantity).toLocaleString()} $
                     </div>
                   </div>
                 ))}
@@ -303,7 +303,7 @@ function CheckoutPage() {
               <div className="space-y-3 mb-6 pt-4 border-t border-gray-200">
                 <div className="flex justify-between text-gray-600">
                   <span>Barchasi</span>
-                  <span>{getCartTotal().toLocaleString()} So'm</span>
+                  <span>{getCartTotal().toLocaleString()} $</span>
                 </div>
                 <div className="flex justify-between text-gray-600">
                   <span>Yetkazib berish</span>
@@ -311,7 +311,7 @@ function CheckoutPage() {
                 </div>
                 <div className="flex justify-between text-gray-900 pt-3 border-t border-gray-200">
                   <span>Hammasi</span>
-                  <span>{getCartTotal().toLocaleString()} So'm</span>
+                  <span>{getCartTotal().toLocaleString()} $</span>
                 </div>
               </div>
 
