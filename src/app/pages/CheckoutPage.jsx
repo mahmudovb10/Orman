@@ -29,7 +29,7 @@ function CheckoutPage() {
     // Buyurtma ma'lumotlarini tayyorlash
     const ordersArray = cart.map((item) => ({
       // Ismiga rangini ham qo'shib qo'yamiz, shunda emailga to'liq boradi
-      name: `${item.title} (Rangi: ${item.selectedColor || "Standart"})`,
+      name: `${item.title} (Rangi: ${item.selectedColor || "Standart"} | Razmeri: ${item.selectedSize} || "Nomalum)`,
       units: item.quantity,
       price: (item.price * item.quantity).toLocaleString(),
       image_url: item.image, // PUBLIC URL bo‘lishi shart

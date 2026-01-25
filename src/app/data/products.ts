@@ -5,7 +5,7 @@ export const products: Product[] = [
     id: 1,
     title: "Merkury",
     category: "lyustra",
-    price: 1500000,
+    price: 125,
     description:
       "Hashamat va nafislikni uyg‘unlashtirgan zamonaviy lyustra. Mehmonxonangizga darhol premium ko‘rinish bag‘ishlaydi.",
     image: "/merkuri.jpg",
@@ -15,51 +15,67 @@ export const products: Product[] = [
       "Qo'l mehnati",
     ],
     material: "MDF, Faton, Led, Diot",
-    dimensions: "2m",
+    dimensions: "1.80m",
     color: "Qora va tilla ranglar",
   },
   {
     id: 2,
     title: "Yupiter",
     category: "lyustra",
-    price: 1300000,
+    price: 109,
     description:
       "Minimalistik dizayn va yorqin yoritish birlashmasi. Har qanday interyerga mos tushadigan ideal tanlov.",
     image: "/yupiter.avif",
+    variants: [
+      {
+        color: "Oq va tilla ranglari",
+        image: "/yupitertwo.avif",
+        size: "1.80",
+      },
+      {
+        color: "Oq va tilla ranglari",
+        image: "/yupiter.avif",
+        size: "1.50",
+      },
+    ],
     features: [
       "Professional ustalar tomonidan ishlab chiqilgan",
       "Har bir detaliga etibor bilan qaralgan",
       "Qo'l mehnati",
     ],
     material: "Faton, MDF, Diot, Led",
-    dimensions: "1.50m",
+    dimensions: "1.50",
     color: "Oq va tilla ranglari",
   },
+
   {
     id: 3,
-    title: "Kosmos ",
-    category: "lyustra",
-    price: 900000,
-    description:
-      "Keng xonalar uchun yaratilgan betakror dizayn. Yorug‘lik va shakl uyg‘unligi bilan e’tiborni tortadi.",
-    image: "/kosmos.avif",
-    features: [
-      "Professional ustalar tomonidan ishlab chiqilgan",
-      "Har bir detaliga etibor bilan qaralgan",
-      "Qo'l mehnati",
-    ],
-    material: "Mahogany",
-    dimensions: "1.20m",
-    color: "Oq va tilla ranglari",
-  },
-  {
-    id: 4,
     title: "Koinot",
     category: "lyustra",
-    price: 1000000,
+    price: 84,
     description:
       "Xonani bir tekis va yumshoq yorituvchi zamonaviy lyustra. Dizayni bilan ko‘zni quvontiradi.",
     image: "/koinot.avif",
+    variants: [
+      {
+        color: "Oq va tilla ranglari",
+        image: "/koinot.avif",
+        size: 1.35,
+        price: 84,
+      },
+      {
+        color: "Qora, Tilla va oq ranglari",
+        image: "/koinottwo.avif",
+        size: "1.80",
+        price: 100,
+      },
+      {
+        color: "Tilla va oq rang",
+        image: "/koinotthree.avif",
+        size: "1.80",
+        price: 100,
+      },
+    ],
     features: [
       "Professional ustalar tomonidan ishlab chiqilgan",
       "Har bir detaliga etibor bilan qaralgan",
@@ -70,13 +86,27 @@ export const products: Product[] = [
     color: "Oq va tilla ranglari",
   },
   {
-    id: 5,
+    id: 4,
     title: "Koinot ORS",
     category: "lyustra",
-    price: 1300000,
+    price: 109,
     description:
       "Jasur ranglar va zamonaviy shakl uyg‘unligi. Interyeringizga kuchli xarakter bag‘ishlaydi.",
     image: "/koinotors.avif",
+    variants: [
+      {
+        color: "Qora, oq va tilla ranglari",
+        image: "/koinotors.avif",
+        size: "1.35",
+        price: 109,
+      },
+      {
+        color: "Qora, oq va tilla ranglari",
+        image: "/koinotors.avif",
+        size: "1.80",
+        price: 134,
+      },
+    ],
     features: [
       "Professional ustalar tomonidan ishlab chiqilgan",
       "Har bir detaliga etibor bilan qaralgan",
@@ -87,13 +117,39 @@ export const products: Product[] = [
     color: "Qora, oq va tilla ranglari",
   },
   {
-    id: 6,
+    id: 5,
     title: "Kosmos ",
     category: "lyustra",
-    price: 1250000,
+    price: 104,
     description:
       "Oq rangdagi nafis dizayn va kuchli yorug‘lik. Toza va zamonaviy muhit yaratadi.",
     image: "/kosmosone.avif",
+    variants: [
+      {
+        color: "Oq va tilla ranglari",
+        image: "/kosmosone.avif",
+        size: "1.50",
+        price: 104,
+      },
+      {
+        color: "Oq va tilla ranglari",
+        image: "/kosmos.avif",
+        size: "1.75",
+        price: 75,
+      },
+      {
+        color: "Oq va tilla ranglari",
+        image: "/kosmostwo.avif",
+        size: "1.80",
+        price: 121,
+      },
+      {
+        color: "Oq va tilla ranglari",
+        image: "/kosmosthree.avif",
+        size: "2",
+        price: 138,
+      },
+    ],
     features: [
       "Professional ustalar tomonidan ishlab chiqilgan",
       "Har bir detaliga etibor bilan qaralgan",
@@ -104,44 +160,10 @@ export const products: Product[] = [
     color: "Oq va tilla ranglari",
   },
   {
-    id: 7,
-    title: "Kosmos ",
-    category: "lyustra",
-    price: 1450000,
-    description:
-      "Oq rangdagi nafis dizayn va kuchli yorug‘lik. Toza va zamonaviy muhit yaratadi.",
-    image: "/kosmostwo.avif",
-    features: [
-      "Professional ustalar tomonidan ishlab chiqilgan",
-      "Har bir detaliga etibor bilan qaralgan",
-      "Qo'l mehnati",
-    ],
-    material: "MDF, Tunuka, Faton, Diot, Led",
-    dimensions: "1.80m",
-    color: "Oq va tilla ranglari",
-  },
-  {
-    id: 8,
-    title: "Kosmos 2M",
-    category: "lyustra",
-    price: 1650000,
-    description:
-      "Klassik va zamonaviy uslubni birlashtirgan model. Uzoq yillar xizmat qiladigan ishonchli tanlov.",
-    image: "/kosmosthree.avif",
-    features: [
-      "Professional ustalar tomonidan ishlab chiqilgan",
-      "Har bir detaliga etibor bilan qaralgan",
-      "Qo'l mehnati",
-    ],
-    material: "MDF, Diot, Faton, Led",
-    dimensions: "2m",
-    color: "Oq va tilla ranglari",
-  },
-  {
-    id: 9,
+    id: 6,
     title: "Tunuka Avalni",
     category: "lyustra",
-    price: 1700000,
+    price: 142,
     description:
       "Zamonaviy dizayn va mukammal yoritish uyg‘unligi. Interyeringizni yangi darajaga olib chiqadi.",
     image: "/avalni.avif",
@@ -154,46 +176,12 @@ export const products: Product[] = [
     dimensions: "2m",
     color: "Tilla, oq va qora ranglari birlashtirilgan",
   },
-  {
-    id: 10,
-    title: "Koinot",
-    category: "lyustra",
-    price: 1200000,
-    description:
-      "Qora va tilla ranglar uyg‘unligidagi hashamatli lyustra. Xonaga darhol boy ko‘rinish beradi.",
-    image: "/koinottwo.avif",
-    features: [
-      "Professional ustalar tomonidan ishlab chiqilgan",
-      "Har bir detaliga etibor bilan qaralgan",
-      "Qo'l mehnati",
-    ],
-    material: "Faton, MDF, Led",
-    dimensions: "1.80m",
-    color: "Qora, Tilla va oq ranglari ",
-  },
-  {
-    id: 11,
-    title: "Koinot",
-    category: "lyustra",
-    price: 1200000,
-    description:
-      "Oltin rangdagi nafis dizayn bilan yaratilgan lyustra. Elita interyerlar uchun mukammal tanlov.",
-    image: "/koinotthree.avif",
-    features: [
-      "Professional ustalar tomonidan ishlab chiqilgan",
-      "Har bir detaliga etibor bilan qaralgan",
-      "Qo'l mehnati",
-    ],
-    material: "Faton, MDF, Led",
-    dimensions: "1.80m",
-    color: "Tilla va oq rang",
-  },
 
   {
-    id: 12,
+    id: 7,
     title: "Avalni",
     category: "lyustra",
-    price: 1700000,
+    price: 142,
     description:
       "Quyosh nurlaridan ilhomlangan yorqin dizayn. Xonangizni iliq va jozibali yoritadi.",
     image: "/avalni.avif",
@@ -206,28 +194,12 @@ export const products: Product[] = [
     dimensions: "1.80m",
     color: "Tilla va qora uyg'unlashtirilgan",
   },
+
   {
-    id: 13,
-    title: "Yupiter",
-    category: "lyustra",
-    price: 1500000,
-    description:
-      "Quyosh nurlaridan ilhomlangan yorqin dizayn. Xonangizni iliq va jozibali yoritadi.",
-    image: "/yupitertwo.avif",
-    features: [
-      "Professional ustalar tomonidan ishlab chiqilgan",
-      "Har bir detaliga etibor bilan qaralgan",
-      "Qo'l mehnati",
-    ],
-    material: "Faton, MDF, Diot, Led",
-    dimensions: "80m",
-    color: "Tilla va oq uyg'unlashtirilgan",
-  },
-  {
-    id: 14,
+    id: 8,
     title: "Koinot New",
     category: "lyustra",
-    price: 1600000,
+    price: 134,
     description:
       "Quyosh nurlaridan ilhomlangan yorqin dizayn. Xonangizni iliq va jozibali yoritadi.",
     image: "/koinotnew.avif",
@@ -241,10 +213,10 @@ export const products: Product[] = [
     color: "Tilla va qora uyg'unlashtirilgan",
   },
   {
-    id: 15,
+    id: 9,
     title: "Karona",
     category: "lyustra",
-    price: 370000,
+    price: 31,
     description:
       "Quyosh nurlaridan ilhomlangan yorqin dizayn. Xonangizni iliq va jozibali yoritadi.",
     image: "/karona.avif",
@@ -258,10 +230,10 @@ export const products: Product[] = [
     color: "Tilla va oq uyg'unlashtirilgan",
   },
   {
-    id: 16,
+    id: 10,
     title: "Karona Qizil",
     category: "lyustra",
-    price: 370000,
+    price: 31,
     description:
       "Quyosh nurlaridan ilhomlangan yorqin dizayn. Xonangizni iliq va jozibali yoritadi.",
     image: "/karonatwo.avif",
@@ -275,17 +247,29 @@ export const products: Product[] = [
     color: "Tilla va oq uyg'unlashtirilgan",
   },
   {
-    id: 17,
+    id: 11,
     title: "Karona Mini",
     category: "lyustra",
-    price: 370000,
+    price: 21,
     description:
       "Quyosh nurlaridan ilhomlangan yorqin dizayn. Xonangizni iliq va jozibali yoritadi.",
     image: "/karonaminione.avif",
     variants: [
-      { color: "Tilla va oq uyg'unlashtirilgan", image: "/karonaminione.avif" },
-      { color: "Qizg'ish va Tilla ranglari", image: "/karonaminitwo.avif" },
-      { color: "Qora va Tilla ranglari", image: "/karonaminithree.avif" },
+      {
+        color: "Tilla va oq uyg'unlashtirilgan",
+        image: "/karonaminione.avif",
+        size: "1.30m",
+      },
+      {
+        color: "Qizg'ish va Tilla ranglari",
+        image: "/karonaminitwo.avif",
+        size: "1.30m",
+      },
+      {
+        color: "Qora va Tilla ranglari",
+        image: "/karonaminithree.avif",
+        size: "1.30m",
+      },
     ],
     features: [
       "Professional ustalar tomonidan ishlab chiqilgan",
@@ -297,10 +281,10 @@ export const products: Product[] = [
     color: "Tilla va oq uyg'unlashtirilgan",
   },
   {
-    id: 18,
+    id: 12,
     title: "Yulduzcha",
     category: "lyustra",
-    price: 220000,
+    price: 19,
     description: " Xonangizni iliq va jozibali yoritadi.",
     image: "/star.avif",
     variants: [
@@ -321,10 +305,10 @@ export const products: Product[] = [
     color: "Tilla va oq uyg'unlashtirilgan",
   },
   {
-    id: 19,
+    id: 13,
     title: "Elegant",
     category: "lyustra",
-    price: 220000,
+    price: 19,
     description: "Xonadoningiz uchun mini lyuks darajasidagi lyustramiz",
     image: "/elegantsix.avif",
     variants: [
@@ -348,10 +332,10 @@ export const products: Product[] = [
     color: "Tilla va qora uyg'unlashtirilgan",
   },
   {
-    id: 20,
-    title: "Elegant Mini",
+    id: 14,
+    title: "Elita Mini",
     category: "lyustra",
-    price: 130000,
+    price: 11,
     description: "Xonadoningiz uchun mini lyuks darajasidagi lyustramiz",
     image: "/elegantminifour.avif",
     variants: [
@@ -378,10 +362,10 @@ export const products: Product[] = [
     color: "Tilla va jigarrang ranglari uyg'unlashtirilgan",
   },
   {
-    id: 21,
+    id: 15,
     title: "Elita",
     category: "lyustra",
-    price: 200000,
+    price: 17,
     description:
       "Uyingizni yorug' va tiniq ushlab turish chun elayt darajadagi lyustramiz",
     image: "/elitasix.avif",
@@ -406,72 +390,3 @@ export const products: Product[] = [
     color: "Tilla va jigarrang ranglari uyg'unlashtirilgan",
   },
 ];
-
-// Sofas
-//   {
-//     id: 9,
-//     title: "Luxury Velvet Sofa",
-//     category: "sofa",
-//     price: 3200,
-//     description:
-//       "Sumptuous velvet sofa with deep cushioning and solid wood frame. Features removable cushions and stain-resistant fabric treatment.",
-//     image:
-//       "https://images.unsplash.com/photo-1759722668253-1767030ad9b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBzb2ZhJTIwbGl2aW5nJTIwcm9vbXxlbnwxfHx8fDE3NjYxMTg3MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-//     features: [
-//       "Premium Velvet",
-//       "Deep Cushioning",
-//       "Wood Frame",
-//       "Stain Resistant",
-//     ],
-//     material: "Velvet & Hardwood",
-//     dimensions: "220cm x 95cm x 85cm",
-//     color: "Emerald Green",
-//   },
-//   {
-//     id: 10,
-//     title: "Leather Sectional Sofa",
-//     category: "sofa",
-//     price: 4500,
-//     description:
-//       "Spacious L-shaped sectional in top-grain leather. Features reclining seats and built-in USB charging ports.",
-//     image:
-//       "https://images.unsplash.com/photo-1759722668253-1767030ad9b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBzb2ZhJTIwbGl2aW5nJTIwcm9vbXxlbnwxfHx8fDE3NjYxMTg3MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-//     features: ["Top-Grain Leather", "Reclining Seats", "USB Ports", "L-Shaped"],
-//     material: "Leather",
-//     dimensions: "280cm x 180cm x 90cm",
-//     color: "Chocolate Brown",
-//   },
-//   {
-//     id: 11,
-//     title: "Mid-Century Modern Sofa",
-//     category: "sofa",
-//     price: 2800,
-//     description:
-//       "Iconic mid-century design with button tufting and tapered wooden legs. Upholstered in durable fabric.",
-//     image:
-//       "https://images.unsplash.com/photo-1759722668253-1767030ad9b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBzb2ZhJTIwbGl2aW5nJTIwcm9vbXxlbnwxfHx8fDE3NjYxMTg3MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-//     features: [
-//       "Button Tufting",
-//       "Wooden Legs",
-//       "Mid-Century Style",
-//       "Durable Fabric",
-//     ],
-//     material: "Fabric & Wood",
-//     dimensions: "200cm x 88cm x 82cm",
-//     color: "Charcoal Gray",
-//   },
-//   {
-//     id: 12,
-//     title: "Contemporary Loveseat",
-//     category: "sofa",
-//     price: 1600,
-//     description:
-//       "Compact two-seater perfect for apartments. Features plush cushions and modern clean lines.",
-//     image:
-//       "https://images.unsplash.com/photo-1759722668253-1767030ad9b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBzb2ZhJTIwbGl2aW5nJTIwcm9vbXxlbnwxfHx8fDE3NjYxMTg3MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-//     features: ["Compact Size", "Plush Cushions", "Modern Design", "2-Seater"],
-//     material: "Linen Blend",
-//     dimensions: "150cm x 85cm x 80cm",
-//     color: "Light Beige",
-//   },
-//];

@@ -50,6 +50,10 @@ function ProductDetailPage() {
     ? product.variants[currentVariantIndex].color
     : product.color || "Standart";
 
+  const currentSIze = hasVariants
+    ? product.variants[currentVariantIndex].size
+    : product.size || "Standart";
+
   // Keyingi rangga o'tish
   // const handleNext = (e) => {
   //   e.stopPropagation();
@@ -84,6 +88,7 @@ function ProductDetailPage() {
       originalId: product.id,
       image: currentImage, // Tanlangan rasm
       selectedColor: currentColor, // Tanlangan rang nomi
+      selectedSize: currentSIze,
       title: `${product.title} (${currentColor})`, // Nomiga rangni qo'shib qo'yamiz
     };
 
@@ -183,7 +188,7 @@ function ProductDetailPage() {
             <h1 className="mb-4 text-amber-900">{product.title}</h1>
             <div className="mb-6">
               <div className="text-amber-900">
-                {product.price.toLocaleString()} So'm
+                {product.price.toLocaleString()} $
               </div>
             </div>
             <p className="text-gray-600 mb-8">{product.description}</p>
@@ -219,7 +224,7 @@ function ProductDetailPage() {
                 {product.dimensions && (
                   <div className="flex justify-between">
                     <span className="text-gray-600">Ditsimetr:</span>
-                    <span className="text-gray-900">{product.dimensions}</span>
+                    <span className="text-gray-900">{currentSIze}</span>
                   </div>
                 )}
                 {/* Bu yerda ham tanlangan rang chiqadi */}
@@ -275,7 +280,7 @@ function ProductDetailPage() {
                       {relatedProduct.title}
                     </h4>
                     <div className="text-amber-900">
-                      {relatedProduct.price.toLocaleString()} So'm
+                      {relatedProduct.price.toLocaleString()} $
                     </div>
                   </div>
                 </div>
